@@ -1,0 +1,840 @@
+2025-03-25 01:41:59,271 - INFO - 开始收集公会 55258 的数据...
+2025-03-25 01:41:59,639 - INFO - 成功获取 20250321 的数据，找到 30 个PID
+2025-03-25 01:41:59,639 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250321.json
+2025-03-25 01:41:59,640 - INFO - 开始获取 30 个PID的详细信息...
+2025-03-25 01:42:08,942 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 01:42:08,943 - INFO - 开始处理数据...
+2025-03-25 01:42:08,943 - INFO - 开始加载 JSON 数据...
+2025-03-25 01:42:08,984 - INFO - 开始计算击杀数据...
+2025-03-25 01:42:08,985 - ERROR - 发生错误: time data '20250321' does not match format '%Y-%m-%d'
+Traceback (most recent call last):
+  File "D:\tool\warpath_data\Neibu.py", line 596, in main
+    results, power_group_stats = calculate_kills(data, start_date, end_date)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\tool\warpath_data\Neibu.py", line 227, in calculate_kills
+    start_timestamp = int(datetime.strptime(start_date, "%Y-%m-%d").strftime(DATE_FORMAT))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\install\anaconda3\Lib\_strptime.py", line 554, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\install\anaconda3\Lib\_strptime.py", line 333, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '20250321' does not match format '%Y-%m-%d'
+2025-03-25 01:42:08,991 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250321.xlsx
+2025-03-25 01:42:08,991 - INFO - 所有数据处理完成！
+2025-03-25 01:43:38,078 - INFO - 开始收集公会 55258 的数据...
+2025-03-25 01:43:38,445 - INFO - 成功获取 20250321 的数据，找到 30 个PID
+2025-03-25 01:43:38,445 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250321.json
+2025-03-25 01:43:38,445 - INFO - 开始获取 30 个PID的详细信息...
+2025-03-25 01:43:47,993 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 01:43:47,994 - INFO - 开始处理数据...
+2025-03-25 01:43:47,994 - INFO - 开始加载 JSON 数据...
+2025-03-25 01:43:48,020 - INFO - 开始计算击杀数据...
+2025-03-25 01:43:48,048 - INFO - 开始导出到 Excel...
+2025-03-25 01:43:48,245 - INFO - 数据已成功导出到 D:\Desktop\warpath_data\reports\final_report_55258_20250321.xlsx
+2025-03-25 01:43:48,246 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250321.xlsx
+2025-03-25 01:43:48,247 - INFO - 所有数据处理完成！
+2025-03-25 01:52:31,886 - INFO - 开始收集公会 55258 在 20250325 的数据...
+2025-03-25 01:52:32,196 - ERROR - 获取数据失败: 未找到有效的pid数据
+2025-03-25 01:52:32,196 - INFO - 公会数据汇总报告已保存到: my_data\reports\guild_report_55258_20250325.json
+2025-03-25 01:52:32,197 - INFO - 开始获取 0 个PID的详细信息...
+2025-03-25 01:52:32,199 - INFO - PID数据已保存到: my_data\pid_data\hi20pids_data.json
+2025-03-25 01:52:32,199 - INFO - 开始处理数据...
+2025-03-25 01:52:32,200 - INFO - 开始加载 JSON 数据...
+2025-03-25 01:52:32,200 - INFO - 开始计算击杀数据...
+2025-03-25 01:52:32,201 - INFO - 开始导出到 Excel...
+2025-03-25 01:52:32,273 - INFO - 数据已成功导出到 my_data\reports\final_report_55258_20250325.xlsx
+2025-03-25 01:52:32,274 - INFO - 数据处理完成，报告已保存到: my_data\reports\final_report_55258_20250325.xlsx
+2025-03-25 01:52:32,274 - INFO - 所有数据处理完成！
+2025-03-25 01:52:53,735 - INFO - 开始收集公会 55258 在 20250324 的数据...
+2025-03-25 01:52:54,034 - ERROR - 获取数据失败: 未找到有效的pid数据
+2025-03-25 01:52:54,035 - INFO - 公会数据汇总报告已保存到: my_data\reports\guild_report_55258_20250324.json
+2025-03-25 01:52:54,035 - INFO - 开始获取 0 个PID的详细信息...
+2025-03-25 01:52:54,035 - INFO - PID数据已保存到: my_data\pid_data\hi20pids_data.json
+2025-03-25 01:52:54,035 - INFO - 开始处理数据...
+2025-03-25 01:52:54,036 - INFO - 开始加载 JSON 数据...
+2025-03-25 01:52:54,036 - INFO - 开始计算击杀数据...
+2025-03-25 01:52:54,036 - INFO - 开始导出到 Excel...
+2025-03-25 01:52:54,104 - INFO - 数据已成功导出到 my_data\reports\final_report_55258_20250324.xlsx
+2025-03-25 01:52:54,105 - INFO - 数据处理完成，报告已保存到: my_data\reports\final_report_55258_20250324.xlsx
+2025-03-25 01:52:54,105 - INFO - 所有数据处理完成！
+2025-03-25 01:53:18,986 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 01:53:19,292 - INFO - 成功获取数据，找到 36 个PID
+2025-03-25 01:53:19,303 - INFO - 公会数据汇总报告已保存到: my_data\reports\guild_report_55258_20250323.json
+2025-03-25 01:53:19,303 - INFO - 开始获取 36 个PID的详细信息...
+2025-03-25 01:53:30,549 - INFO - PID数据已保存到: my_data\pid_data\hi20pids_data.json
+2025-03-25 01:53:30,550 - INFO - 开始处理数据...
+2025-03-25 01:53:30,550 - INFO - 开始加载 JSON 数据...
+2025-03-25 01:53:30,591 - INFO - 开始计算击杀数据...
+2025-03-25 01:53:30,606 - INFO - 开始导出到 Excel...
+2025-03-25 01:53:30,808 - INFO - 数据已成功导出到 my_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 01:53:30,810 - INFO - 数据处理完成，报告已保存到: my_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 01:53:30,810 - INFO - 所有数据处理完成！
+2025-03-25 01:54:06,499 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 01:54:06,819 - INFO - 成功获取数据，找到 36 个PID
+2025-03-25 01:54:06,820 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 01:54:06,820 - INFO - 开始获取 36 个PID的详细信息...
+2025-03-25 01:54:17,654 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 01:54:17,657 - INFO - 开始处理数据...
+2025-03-25 01:54:17,657 - INFO - 开始加载 JSON 数据...
+2025-03-25 01:54:17,694 - INFO - 开始计算击杀数据...
+2025-03-25 01:54:17,706 - INFO - 开始导出到 Excel...
+2025-03-25 01:54:18,028 - INFO - 数据已成功导出到 D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 01:54:18,031 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 01:54:18,032 - INFO - 所有数据处理完成！
+2025-03-25 02:02:50,504 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 02:02:50,504 - INFO - 正在获取公会ID 55258 在 20250323 的数据...
+2025-03-25 02:02:50,881 - ERROR - 获取数据时发生错误: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:02:50,881 - ERROR - 获取数据失败: 获取数据失败
+2025-03-25 02:02:50,882 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 02:02:50,883 - INFO - 开始获取 0 个PID的详细信息...
+2025-03-25 02:02:50,884 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 02:02:50,884 - INFO - 开始处理数据...
+2025-03-25 02:02:50,884 - INFO - 开始加载 JSON 数据...
+2025-03-25 02:02:50,885 - INFO - 开始计算击杀数据...
+2025-03-25 02:02:50,885 - INFO - 开始导出到 Excel...
+2025-03-25 02:02:50,905 - ERROR - 发生错误: [Errno 13] Permission denied: 'D:\\Desktop\\warpath_data\\reports\\final_report_55258_20250323.xlsx'
+Traceback (most recent call last):
+  File "D:\tool\warpath_data\Neibu.py", line 599, in main
+    exporter.export(results, power_group_stats)
+  File "D:\tool\warpath_data\Neibu.py", line 317, in export
+    with pd.ExcelWriter(self.output_file, engine="xlsxwriter") as writer:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\install\anaconda3\Lib\site-packages\pandas\io\excel\_xlsxwriter.py", line 204, in __init__
+    super().__init__(
+  File "D:\install\anaconda3\Lib\site-packages\pandas\io\excel\_base.py", line 1246, in __init__
+    self._handles = get_handle(
+                    ^^^^^^^^^^^
+  File "D:\install\anaconda3\Lib\site-packages\pandas\io\common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'D:\\Desktop\\warpath_data\\reports\\final_report_55258_20250323.xlsx'
+2025-03-25 02:02:50,909 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:02:50,909 - INFO - 所有数据处理完成！
+2025-03-25 02:02:56,600 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 02:02:56,600 - INFO - 正在获取公会ID 55258 在 20250323 的数据...
+2025-03-25 02:02:56,954 - ERROR - 获取数据时发生错误: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:02:56,955 - ERROR - 获取数据失败: 获取数据失败
+2025-03-25 02:02:56,956 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 02:02:56,956 - INFO - 开始获取 0 个PID的详细信息...
+2025-03-25 02:02:56,957 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 02:02:56,957 - INFO - 开始处理数据...
+2025-03-25 02:02:56,958 - INFO - 开始加载 JSON 数据...
+2025-03-25 02:02:56,958 - INFO - 开始计算击杀数据...
+2025-03-25 02:02:56,958 - INFO - 开始导出到 Excel...
+2025-03-25 02:02:57,006 - INFO - 数据已成功导出到 D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:02:57,006 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:02:57,006 - INFO - 所有数据处理完成！
+2025-03-25 02:03:16,704 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 02:03:16,704 - INFO - 正在获取公会ID 55258 在 20250323 的数据...
+2025-03-25 02:03:17,064 - ERROR - 获取数据时发生错误: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:03:17,064 - ERROR - 获取数据失败: 获取数据失败
+2025-03-25 02:03:17,065 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 02:03:17,065 - INFO - 开始获取 0 个PID的详细信息...
+2025-03-25 02:03:17,066 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 02:03:17,066 - INFO - 开始处理数据...
+2025-03-25 02:03:17,067 - INFO - 开始加载 JSON 数据...
+2025-03-25 02:03:17,067 - INFO - 开始计算击杀数据...
+2025-03-25 02:03:17,068 - INFO - 开始导出到 Excel...
+2025-03-25 02:03:17,158 - INFO - 数据已成功导出到 D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:03:17,159 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:03:17,159 - INFO - 所有数据处理完成！
+2025-03-25 02:06:08,432 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 02:06:08,432 - INFO - 正在获取公会ID 55258 在 20250323 的数据...
+2025-03-25 02:06:08,792 - WARNING - 响应不是JSON格式: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:06:08,792 - INFO - 等待 3 秒后重试...
+2025-03-25 02:06:11,972 - WARNING - 响应不是JSON格式: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:06:11,972 - INFO - 等待 3 秒后重试...
+2025-03-25 02:06:15,162 - WARNING - 响应不是JSON格式: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:06:15,162 - INFO - 等待 3 秒后重试...
+2025-03-25 02:06:18,344 - WARNING - 响应不是JSON格式: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:06:18,345 - INFO - 等待 3 秒后重试...
+2025-03-25 02:06:25,557 - WARNING - 响应不是JSON格式: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:06:25,558 - INFO - 等待 3 秒后重试...
+2025-03-25 02:06:28,867 - WARNING - 响应不是JSON格式: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:06:28,867 - ERROR - 获取公会 55258 在 20250323 的数据失败
+2025-03-25 02:06:28,868 - ERROR - 获取数据失败: 获取数据失败
+2025-03-25 02:06:28,869 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 02:06:28,869 - INFO - 开始获取 0 个PID的详细信息...
+2025-03-25 02:06:28,870 - WARNING - 没有PID需要获取
+2025-03-25 02:06:28,870 - INFO - 开始处理数据...
+2025-03-25 02:06:28,871 - INFO - 开始加载 JSON 数据...
+2025-03-25 02:06:28,871 - INFO - 开始计算击杀数据...
+2025-03-25 02:06:28,872 - INFO - 开始导出到 Excel...
+2025-03-25 02:06:28,967 - INFO - 数据已成功导出到 D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:06:28,967 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:06:28,968 - INFO - 所有数据处理完成！
+2025-03-25 02:07:31,022 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 02:07:31,022 - INFO - 正在获取公会ID 55258 在 20250323 的数据...
+2025-03-25 02:07:31,356 - WARNING - 响应不是JSON格式: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:07:31,356 - WARNING - 响应内容: {"Code":0,"Message":"ok","Data":[{"id":60082195,"day":20250323,"pid":1855018,"wid":12,"cid":46003,"ccid":46003,"gid":55258,"gnick":"RS","lv":32,"nick":"Привет.","power":283965849,"maxpower":262476738,"sumkill":1087092,"score":602936160,"die":576490,"caiji":34157352074,"gx":36446,"bz":37161,"c_power":9188313,"c_die":771,"c_score":1580700,"c_sumkill":2401,"c_caiji":49367489,"kills":[13158,3372,1258,3642,8784,23591,44110,67318,78792,79307,97032,80180,424366,152257,9925],"created_at":"2025-03-24 12:...
+2025-03-25 02:07:31,357 - INFO - 等待 3 秒后重试...
+2025-03-25 02:07:34,513 - WARNING - 响应不是JSON格式: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:07:34,514 - WARNING - 响应内容: {"Code":0,"Message":"ok","Data":[{"id":60082195,"day":20250323,"pid":1855018,"wid":12,"cid":46003,"ccid":46003,"gid":55258,"gnick":"RS","lv":32,"nick":"Привет.","power":283965849,"maxpower":262476738,"sumkill":1087092,"score":602936160,"die":576490,"caiji":34157352074,"gx":36446,"bz":37161,"c_power":9188313,"c_die":771,"c_score":1580700,"c_sumkill":2401,"c_caiji":49367489,"kills":[13158,3372,1258,3642,8784,23591,44110,67318,78792,79307,97032,80180,424366,152257,9925],"created_at":"2025-03-24 12:...
+2025-03-25 02:07:34,514 - INFO - 等待 6 秒后重试...
+2025-03-25 02:07:40,674 - WARNING - 响应不是JSON格式: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:07:40,674 - WARNING - 响应内容: {"Code":0,"Message":"ok","Data":[{"id":60082195,"day":20250323,"pid":1855018,"wid":12,"cid":46003,"ccid":46003,"gid":55258,"gnick":"RS","lv":32,"nick":"Привет.","power":283965849,"maxpower":262476738,"sumkill":1087092,"score":602936160,"die":576490,"caiji":34157352074,"gx":36446,"bz":37161,"c_power":9188313,"c_die":771,"c_score":1580700,"c_sumkill":2401,"c_caiji":49367489,"kills":[13158,3372,1258,3642,8784,23591,44110,67318,78792,79307,97032,80180,424366,152257,9925],"created_at":"2025-03-24 12:...
+2025-03-25 02:07:40,675 - INFO - 等待 9 秒后重试...
+2025-03-25 02:07:49,818 - WARNING - 响应不是JSON格式: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:07:49,819 - WARNING - 响应内容: {"Code":0,"Message":"ok","Data":[{"id":60082195,"day":20250323,"pid":1855018,"wid":12,"cid":46003,"ccid":46003,"gid":55258,"gnick":"RS","lv":32,"nick":"Привет.","power":283965849,"maxpower":262476738,"sumkill":1087092,"score":602936160,"die":576490,"caiji":34157352074,"gx":36446,"bz":37161,"c_power":9188313,"c_die":771,"c_score":1580700,"c_sumkill":2401,"c_caiji":49367489,"kills":[13158,3372,1258,3642,8784,23591,44110,67318,78792,79307,97032,80180,424366,152257,9925],"created_at":"2025-03-24 12:...
+2025-03-25 02:07:49,819 - INFO - 等待 12 秒后重试...
+2025-03-25 02:08:01,977 - WARNING - 响应不是JSON格式: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:08:01,977 - WARNING - 响应内容: {"Code":0,"Message":"ok","Data":[{"id":60082195,"day":20250323,"pid":1855018,"wid":12,"cid":46003,"ccid":46003,"gid":55258,"gnick":"RS","lv":32,"nick":"Привет.","power":283965849,"maxpower":262476738,"sumkill":1087092,"score":602936160,"die":576490,"caiji":34157352074,"gx":36446,"bz":37161,"c_power":9188313,"c_die":771,"c_score":1580700,"c_sumkill":2401,"c_caiji":49367489,"kills":[13158,3372,1258,3642,8784,23591,44110,67318,78792,79307,97032,80180,424366,152257,9925],"created_at":"2025-03-24 12:...
+2025-03-25 02:08:01,979 - INFO - 等待 15 秒后重试...
+2025-03-25 02:08:17,143 - WARNING - 响应不是JSON格式: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:08:17,143 - WARNING - 响应内容: {"Code":0,"Message":"ok","Data":[{"id":60082195,"day":20250323,"pid":1855018,"wid":12,"cid":46003,"ccid":46003,"gid":55258,"gnick":"RS","lv":32,"nick":"Привет.","power":283965849,"maxpower":262476738,"sumkill":1087092,"score":602936160,"die":576490,"caiji":34157352074,"gx":36446,"bz":37161,"c_power":9188313,"c_die":771,"c_score":1580700,"c_sumkill":2401,"c_caiji":49367489,"kills":[13158,3372,1258,3642,8784,23591,44110,67318,78792,79307,97032,80180,424366,152257,9925],"created_at":"2025-03-24 12:...
+2025-03-25 02:08:17,144 - ERROR - 获取公会 55258 在 20250323 的数据失败
+2025-03-25 02:08:17,144 - ERROR - 获取数据失败: 获取数据失败
+2025-03-25 02:08:17,145 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 02:08:17,145 - INFO - 开始获取 0 个PID的详细信息...
+2025-03-25 02:08:17,145 - WARNING - 没有PID需要获取
+2025-03-25 02:08:17,146 - INFO - 开始处理数据...
+2025-03-25 02:08:17,146 - INFO - 开始加载 JSON 数据...
+2025-03-25 02:08:17,146 - INFO - 开始计算击杀数据...
+2025-03-25 02:08:17,147 - INFO - 开始导出到 Excel...
+2025-03-25 02:08:17,201 - INFO - 数据已成功导出到 D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:08:17,201 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:08:17,201 - INFO - 所有数据处理完成！
+2025-03-25 02:10:49,336 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 02:10:49,336 - INFO - 正在获取公会ID 55258 在 20250323 的数据...
+2025-03-25 02:10:49,705 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:10:49,706 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:49,709 - INFO - 成功获取数据，找到 36 个PID
+2025-03-25 02:10:49,710 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 02:10:49,710 - INFO - 开始获取 36 个PID的详细信息...
+2025-03-25 02:10:50,010 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3506053&page=1&perPage=50'
+2025-03-25 02:10:50,011 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,080 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1015940&page=1&perPage=50'
+2025-03-25 02:10:50,081 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,091 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1029905&page=1&perPage=50'
+2025-03-25 02:10:50,092 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,144 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1840650&page=1&perPage=50'
+2025-03-25 02:10:50,145 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,148 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2008587&page=1&perPage=50'
+2025-03-25 02:10:50,149 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,177 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1380224&page=1&perPage=50'
+2025-03-25 02:10:50,178 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,200 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859987&page=1&perPage=50'
+2025-03-25 02:10:50,201 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,263 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1211149&page=1&perPage=50'
+2025-03-25 02:10:50,264 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,301 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1124236&page=1&perPage=50'
+2025-03-25 02:10:50,301 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,313 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3241747&page=1&perPage=50'
+2025-03-25 02:10:50,314 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,331 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819158&page=1&perPage=50'
+2025-03-25 02:10:50,332 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,347 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1771797&page=1&perPage=50'
+2025-03-25 02:10:50,348 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,358 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855018&page=1&perPage=50'
+2025-03-25 02:10:50,360 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,367 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2003101&page=1&perPage=50'
+2025-03-25 02:10:50,367 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,395 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1010221&page=1&perPage=50'
+2025-03-25 02:10:50,396 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,428 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1835436&page=1&perPage=50'
+2025-03-25 02:10:50,429 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,508 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1021377&page=1&perPage=50'
+2025-03-25 02:10:50,509 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,525 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819061&page=1&perPage=50'
+2025-03-25 02:10:50,525 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,545 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2127919&page=1&perPage=50'
+2025-03-25 02:10:50,545 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,553 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1132728&page=1&perPage=50'
+2025-03-25 02:10:50,554 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,571 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1000521&page=1&perPage=50'
+2025-03-25 02:10:50,572 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,618 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855947&page=1&perPage=50'
+2025-03-25 02:10:50,619 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,659 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1818183&page=1&perPage=50'
+2025-03-25 02:10:50,660 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,670 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1043797&page=1&perPage=50'
+2025-03-25 02:10:50,671 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,671 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1272511&page=1&perPage=50'
+2025-03-25 02:10:50,673 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,700 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1365467&page=1&perPage=50'
+2025-03-25 02:10:50,702 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,702 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828695&page=1&perPage=50'
+2025-03-25 02:10:50,703 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,794 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1820380&page=1&perPage=50'
+2025-03-25 02:10:50,794 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,797 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1831652&page=1&perPage=50'
+2025-03-25 02:10:50,798 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,845 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2314599&page=1&perPage=50'
+2025-03-25 02:10:50,846 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,885 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1834731&page=1&perPage=50'
+2025-03-25 02:10:50,887 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,891 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828597&page=1&perPage=50'
+2025-03-25 02:10:50,892 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,894 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859429&page=1&perPage=50'
+2025-03-25 02:10:50,895 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,896 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1118298&page=1&perPage=50'
+2025-03-25 02:10:50,897 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,924 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1090805&page=1&perPage=50'
+2025-03-25 02:10:50,925 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:50,933 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1858170&page=1&perPage=50'
+2025-03-25 02:10:50,935 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:10:51,083 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 02:10:51,084 - INFO - 开始处理数据...
+2025-03-25 02:10:51,085 - INFO - 开始加载 JSON 数据...
+2025-03-25 02:10:51,127 - INFO - 开始计算击杀数据...
+2025-03-25 02:10:51,138 - INFO - 开始导出到 Excel...
+2025-03-25 02:10:51,283 - INFO - 数据已成功导出到 D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:10:51,284 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:10:51,284 - INFO - 所有数据处理完成！
+2025-03-25 02:11:16,983 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 02:11:16,983 - INFO - 正在获取公会ID 55258 在 20250323 的数据...
+2025-03-25 02:11:17,322 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:11:17,322 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,325 - INFO - 成功获取数据，找到 36 个PID
+2025-03-25 02:11:17,325 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 02:11:17,325 - INFO - 开始获取 36 个PID的详细信息...
+2025-03-25 02:11:17,622 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1015940&page=1&perPage=50'
+2025-03-25 02:11:17,623 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,647 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1029905&page=1&perPage=50'
+2025-03-25 02:11:17,650 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,710 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3506053&page=1&perPage=50'
+2025-03-25 02:11:17,711 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,758 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859987&page=1&perPage=50'
+2025-03-25 02:11:17,758 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,779 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3241747&page=1&perPage=50'
+2025-03-25 02:11:17,780 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,785 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2008587&page=1&perPage=50'
+2025-03-25 02:11:17,786 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,823 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1771797&page=1&perPage=50'
+2025-03-25 02:11:17,824 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,911 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2003101&page=1&perPage=50'
+2025-03-25 02:11:17,912 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,946 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1211149&page=1&perPage=50'
+2025-03-25 02:11:17,946 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,955 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1124236&page=1&perPage=50'
+2025-03-25 02:11:17,956 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,956 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1840650&page=1&perPage=50'
+2025-03-25 02:11:17,957 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,973 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1380224&page=1&perPage=50'
+2025-03-25 02:11:17,973 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,991 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819158&page=1&perPage=50'
+2025-03-25 02:11:17,991 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,992 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855018&page=1&perPage=50'
+2025-03-25 02:11:17,993 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:17,993 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1835436&page=1&perPage=50'
+2025-03-25 02:11:17,994 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,017 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1010221&page=1&perPage=50'
+2025-03-25 02:11:18,019 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,048 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2127919&page=1&perPage=50'
+2025-03-25 02:11:18,049 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,096 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819061&page=1&perPage=50'
+2025-03-25 02:11:18,096 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,112 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1272511&page=1&perPage=50'
+2025-03-25 02:11:18,114 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,199 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1021377&page=1&perPage=50'
+2025-03-25 02:11:18,200 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,209 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855947&page=1&perPage=50'
+2025-03-25 02:11:18,210 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,219 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1000521&page=1&perPage=50'
+2025-03-25 02:11:18,220 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,255 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1818183&page=1&perPage=50'
+2025-03-25 02:11:18,255 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,283 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828695&page=1&perPage=50'
+2025-03-25 02:11:18,285 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,301 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1043797&page=1&perPage=50'
+2025-03-25 02:11:18,303 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,343 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1118298&page=1&perPage=50'
+2025-03-25 02:11:18,344 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,359 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1132728&page=1&perPage=50'
+2025-03-25 02:11:18,360 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,376 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1365467&page=1&perPage=50'
+2025-03-25 02:11:18,377 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,423 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1820380&page=1&perPage=50'
+2025-03-25 02:11:18,423 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,425 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859429&page=1&perPage=50'
+2025-03-25 02:11:18,426 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,446 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2314599&page=1&perPage=50'
+2025-03-25 02:11:18,447 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,467 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1831652&page=1&perPage=50'
+2025-03-25 02:11:18,467 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,524 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1834731&page=1&perPage=50'
+2025-03-25 02:11:18,525 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,532 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828597&page=1&perPage=50'
+2025-03-25 02:11:18,532 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,532 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1858170&page=1&perPage=50'
+2025-03-25 02:11:18,534 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,541 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1090805&page=1&perPage=50'
+2025-03-25 02:11:18,541 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:11:18,671 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 02:11:18,672 - INFO - 开始处理数据...
+2025-03-25 02:11:18,672 - INFO - 开始加载 JSON 数据...
+2025-03-25 02:11:18,702 - INFO - 开始计算击杀数据...
+2025-03-25 02:11:18,713 - INFO - 开始导出到 Excel...
+2025-03-25 02:11:18,850 - INFO - 数据已成功导出到 D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:11:18,851 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:11:18,851 - INFO - 所有数据处理完成！
+2025-03-25 02:17:57,962 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 02:17:57,963 - INFO - 正在获取公会ID 55258 在 20250323 的数据...
+2025-03-25 02:17:58,397 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:17:58,398 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:58,401 - INFO - 成功获取数据，找到 36 个PID
+2025-03-25 02:17:58,402 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 02:17:58,402 - INFO - 开始获取 36 个PID的详细信息...
+2025-03-25 02:17:58,743 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1840650&page=1&perPage=50'
+2025-03-25 02:17:58,744 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:58,806 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1015940&page=1&perPage=50'
+2025-03-25 02:17:58,807 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:58,830 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1211149&page=1&perPage=50'
+2025-03-25 02:17:58,831 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:58,877 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3506053&page=1&perPage=50'
+2025-03-25 02:17:58,878 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:58,881 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1380224&page=1&perPage=50'
+2025-03-25 02:17:58,883 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:58,954 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859987&page=1&perPage=50'
+2025-03-25 02:17:58,955 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:58,969 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1029905&page=1&perPage=50'
+2025-03-25 02:17:58,970 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:58,999 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3241747&page=1&perPage=50'
+2025-03-25 02:17:59,000 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,013 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2008587&page=1&perPage=50'
+2025-03-25 02:17:59,014 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,014 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1124236&page=1&perPage=50'
+2025-03-25 02:17:59,014 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,022 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1771797&page=1&perPage=50'
+2025-03-25 02:17:59,023 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,119 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2003101&page=1&perPage=50'
+2025-03-25 02:17:59,121 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,160 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1010221&page=1&perPage=50'
+2025-03-25 02:17:59,164 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,186 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855018&page=1&perPage=50'
+2025-03-25 02:17:59,186 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,187 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819158&page=1&perPage=50'
+2025-03-25 02:17:59,187 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,188 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1835436&page=1&perPage=50'
+2025-03-25 02:17:59,188 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,190 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2127919&page=1&perPage=50'
+2025-03-25 02:17:59,193 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,231 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1132728&page=1&perPage=50'
+2025-03-25 02:17:59,232 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,256 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1272511&page=1&perPage=50'
+2025-03-25 02:17:59,256 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,267 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819061&page=1&perPage=50'
+2025-03-25 02:17:59,268 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,289 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1021377&page=1&perPage=50'
+2025-03-25 02:17:59,290 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,339 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1818183&page=1&perPage=50'
+2025-03-25 02:17:59,340 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,344 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1000521&page=1&perPage=50'
+2025-03-25 02:17:59,348 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,455 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1043797&page=1&perPage=50'
+2025-03-25 02:17:59,457 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,459 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828695&page=1&perPage=50'
+2025-03-25 02:17:59,460 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,536 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859429&page=1&perPage=50'
+2025-03-25 02:17:59,537 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,550 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1365467&page=1&perPage=50'
+2025-03-25 02:17:59,550 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,605 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1118298&page=1&perPage=50'
+2025-03-25 02:17:59,606 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,613 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855947&page=1&perPage=50'
+2025-03-25 02:17:59,614 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,621 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1834731&page=1&perPage=50'
+2025-03-25 02:17:59,622 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,629 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1831652&page=1&perPage=50'
+2025-03-25 02:17:59,629 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,654 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1820380&page=1&perPage=50'
+2025-03-25 02:17:59,654 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,683 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2314599&page=1&perPage=50'
+2025-03-25 02:17:59,684 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,718 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828597&page=1&perPage=50'
+2025-03-25 02:17:59,718 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,727 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1090805&page=1&perPage=50'
+2025-03-25 02:17:59,728 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,729 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1858170&page=1&perPage=50'
+2025-03-25 02:17:59,729 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:17:59,839 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 02:17:59,841 - INFO - 开始处理数据...
+2025-03-25 02:17:59,842 - INFO - 开始加载 JSON 数据...
+2025-03-25 02:17:59,874 - INFO - 开始计算击杀数据...
+2025-03-25 02:17:59,890 - INFO - 开始导出到 Excel...
+2025-03-25 02:17:59,909 - ERROR - 发生错误: [Errno 13] Permission denied: 'D:\\Desktop\\warpath_data\\reports\\final_report_55258_20250323.xlsx'
+Traceback (most recent call last):
+  File "D:\tool\warpath_data\Neibu.py", line 482, in main
+    exporter.export(results, power_group_stats)
+  File "D:\tool\warpath_data\Neibu.py", line 250, in export
+    with pd.ExcelWriter(self.output_file, engine="xlsxwriter") as writer:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\install\anaconda3\Lib\site-packages\pandas\io\excel\_xlsxwriter.py", line 204, in __init__
+    super().__init__(
+  File "D:\install\anaconda3\Lib\site-packages\pandas\io\excel\_base.py", line 1246, in __init__
+    self._handles = get_handle(
+                    ^^^^^^^^^^^
+  File "D:\install\anaconda3\Lib\site-packages\pandas\io\common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'D:\\Desktop\\warpath_data\\reports\\final_report_55258_20250323.xlsx'
+2025-03-25 02:17:59,912 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:17:59,913 - INFO - 所有数据处理完成！
+2025-03-25 02:18:18,637 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 02:18:18,637 - INFO - 正在获取公会ID 55258 在 20250323 的数据...
+2025-03-25 02:18:18,976 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:18:18,977 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:18,979 - INFO - 成功获取数据，找到 36 个PID
+2025-03-25 02:18:18,980 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 02:18:18,980 - INFO - 开始获取 36 个PID的详细信息...
+2025-03-25 02:18:19,357 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1015940&page=1&perPage=50'
+2025-03-25 02:18:19,360 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,396 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1380224&page=1&perPage=50'
+2025-03-25 02:18:19,399 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,434 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859987&page=1&perPage=50'
+2025-03-25 02:18:19,435 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,453 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1124236&page=1&perPage=50'
+2025-03-25 02:18:19,454 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,463 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2008587&page=1&perPage=50'
+2025-03-25 02:18:19,463 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,465 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1029905&page=1&perPage=50'
+2025-03-25 02:18:19,466 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,470 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3506053&page=1&perPage=50'
+2025-03-25 02:18:19,472 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,504 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1840650&page=1&perPage=50'
+2025-03-25 02:18:19,505 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,506 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3241747&page=1&perPage=50'
+2025-03-25 02:18:19,507 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,545 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1211149&page=1&perPage=50'
+2025-03-25 02:18:19,546 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,568 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1771797&page=1&perPage=50'
+2025-03-25 02:18:19,570 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,705 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819158&page=1&perPage=50'
+2025-03-25 02:18:19,708 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,709 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1010221&page=1&perPage=50'
+2025-03-25 02:18:19,709 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,720 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2003101&page=1&perPage=50'
+2025-03-25 02:18:19,721 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,750 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819061&page=1&perPage=50'
+2025-03-25 02:18:19,751 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,773 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1132728&page=1&perPage=50'
+2025-03-25 02:18:19,774 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,774 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2127919&page=1&perPage=50'
+2025-03-25 02:18:19,775 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,818 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1272511&page=1&perPage=50'
+2025-03-25 02:18:19,819 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,819 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1021377&page=1&perPage=50'
+2025-03-25 02:18:19,820 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,827 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855018&page=1&perPage=50'
+2025-03-25 02:18:19,828 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,828 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1835436&page=1&perPage=50'
+2025-03-25 02:18:19,829 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,898 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1818183&page=1&perPage=50'
+2025-03-25 02:18:19,899 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,907 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855947&page=1&perPage=50'
+2025-03-25 02:18:19,908 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,931 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1000521&page=1&perPage=50'
+2025-03-25 02:18:19,932 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:19,972 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1043797&page=1&perPage=50'
+2025-03-25 02:18:19,973 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:20,121 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828695&page=1&perPage=50'
+2025-03-25 02:18:20,123 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:20,131 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1831652&page=1&perPage=50'
+2025-03-25 02:18:20,131 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:20,131 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1118298&page=1&perPage=50'
+2025-03-25 02:18:20,132 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:20,162 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1365467&page=1&perPage=50'
+2025-03-25 02:18:20,163 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:20,166 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1834731&page=1&perPage=50'
+2025-03-25 02:18:20,167 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:20,172 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1820380&page=1&perPage=50'
+2025-03-25 02:18:20,173 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:20,205 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2314599&page=1&perPage=50'
+2025-03-25 02:18:20,206 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:20,212 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859429&page=1&perPage=50'
+2025-03-25 02:18:20,214 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:20,214 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828597&page=1&perPage=50'
+2025-03-25 02:18:20,214 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:20,246 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1090805&page=1&perPage=50'
+2025-03-25 02:18:20,247 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:20,303 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1858170&page=1&perPage=50'
+2025-03-25 02:18:20,304 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:18:20,413 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 02:18:20,414 - INFO - 开始处理数据...
+2025-03-25 02:18:20,415 - INFO - 开始加载 JSON 数据...
+2025-03-25 02:18:20,448 - INFO - 开始计算击杀数据...
+2025-03-25 02:18:20,469 - INFO - 开始导出到 Excel...
+2025-03-25 02:18:20,518 - ERROR - 发生错误: NAN/INF not supported in write_number() without 'nan_inf_to_errors' Workbook() option
+Traceback (most recent call last):
+  File "D:\tool\warpath_data\Neibu.py", line 482, in main
+    exporter.export(results, power_group_stats)
+  File "D:\tool\warpath_data\Neibu.py", line 254, in export
+    self._export_main_table(writer, main_table)
+  File "D:\tool\warpath_data\Neibu.py", line 306, in _export_main_table
+    worksheet_main.write(row_num, col_num, main_df.iloc[row_num - 1, col_num], cell_format)
+  File "D:\install\anaconda3\Lib\site-packages\xlsxwriter\worksheet.py", line 108, in cell_wrapper
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\install\anaconda3\Lib\site-packages\xlsxwriter\worksheet.py", line 481, in write
+    return self._write(row, col, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\install\anaconda3\Lib\site-packages\xlsxwriter\worksheet.py", line 535, in _write
+    return self._write_number(row, col, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\install\anaconda3\Lib\site-packages\xlsxwriter\worksheet.py", line 643, in _write_number
+    raise TypeError(
+TypeError: NAN/INF not supported in write_number() without 'nan_inf_to_errors' Workbook() option
+2025-03-25 02:18:20,522 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:18:20,522 - INFO - 所有数据处理完成！
+2025-03-25 02:19:30,092 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 02:19:30,092 - INFO - 正在获取公会ID 55258 在 20250323 的数据...
+2025-03-25 02:19:30,428 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:19:30,429 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:30,442 - INFO - 成功获取数据，找到 36 个PID
+2025-03-25 02:19:30,443 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 02:19:30,444 - INFO - 开始获取 36 个PID的详细信息...
+2025-03-25 02:19:30,809 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1211149&page=1&perPage=50'
+2025-03-25 02:19:30,811 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:30,838 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1124236&page=1&perPage=50'
+2025-03-25 02:19:30,839 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:30,839 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1380224&page=1&perPage=50'
+2025-03-25 02:19:30,840 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:30,875 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1029905&page=1&perPage=50'
+2025-03-25 02:19:30,876 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:30,876 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3506053&page=1&perPage=50'
+2025-03-25 02:19:30,877 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:30,880 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1840650&page=1&perPage=50'
+2025-03-25 02:19:30,880 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:30,886 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3241747&page=1&perPage=50'
+2025-03-25 02:19:30,886 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:30,894 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2008587&page=1&perPage=50'
+2025-03-25 02:19:30,894 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:30,901 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1015940&page=1&perPage=50'
+2025-03-25 02:19:30,901 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:30,928 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859987&page=1&perPage=50'
+2025-03-25 02:19:30,929 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,052 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819158&page=1&perPage=50'
+2025-03-25 02:19:31,053 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,055 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1771797&page=1&perPage=50'
+2025-03-25 02:19:31,056 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,093 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1010221&page=1&perPage=50'
+2025-03-25 02:19:31,094 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,146 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2003101&page=1&perPage=50'
+2025-03-25 02:19:31,147 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,210 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855018&page=1&perPage=50'
+2025-03-25 02:19:31,211 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,238 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2127919&page=1&perPage=50'
+2025-03-25 02:19:31,239 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,259 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819061&page=1&perPage=50'
+2025-03-25 02:19:31,261 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,261 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1132728&page=1&perPage=50'
+2025-03-25 02:19:31,263 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,289 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1818183&page=1&perPage=50'
+2025-03-25 02:19:31,291 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,308 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1835436&page=1&perPage=50'
+2025-03-25 02:19:31,309 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,336 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1272511&page=1&perPage=50'
+2025-03-25 02:19:31,339 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,412 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1365467&page=1&perPage=50'
+2025-03-25 02:19:31,413 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,413 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855947&page=1&perPage=50'
+2025-03-25 02:19:31,414 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,518 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1831652&page=1&perPage=50'
+2025-03-25 02:19:31,519 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,522 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1021377&page=1&perPage=50'
+2025-03-25 02:19:31,524 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,555 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1000521&page=1&perPage=50'
+2025-03-25 02:19:31,556 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,638 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828695&page=1&perPage=50'
+2025-03-25 02:19:31,639 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,642 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859429&page=1&perPage=50'
+2025-03-25 02:19:31,642 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,649 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1118298&page=1&perPage=50'
+2025-03-25 02:19:31,652 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,653 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1043797&page=1&perPage=50'
+2025-03-25 02:19:31,654 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,670 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1820380&page=1&perPage=50'
+2025-03-25 02:19:31,670 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,689 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1834731&page=1&perPage=50'
+2025-03-25 02:19:31,691 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,696 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2314599&page=1&perPage=50'
+2025-03-25 02:19:31,697 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,717 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1858170&page=1&perPage=50'
+2025-03-25 02:19:31,717 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,728 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828597&page=1&perPage=50'
+2025-03-25 02:19:31,729 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,734 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1090805&page=1&perPage=50'
+2025-03-25 02:19:31,734 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:19:31,842 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 02:19:31,843 - INFO - 开始处理数据...
+2025-03-25 02:19:31,844 - INFO - 开始加载 JSON 数据...
+2025-03-25 02:19:31,876 - INFO - 开始计算击杀数据...
+2025-03-25 02:19:31,891 - INFO - 开始导出到 Excel...
+2025-03-25 02:19:32,024 - INFO - 数据已成功导出到 D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:19:32,025 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:19:32,025 - INFO - 所有数据处理完成！
+2025-03-25 02:22:48,820 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 02:22:48,820 - INFO - 正在获取公会ID 55258 在 20250323 的数据...
+2025-03-25 02:22:49,150 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:22:49,150 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,153 - INFO - 成功获取数据，找到 36 个PID
+2025-03-25 02:22:49,153 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 02:22:49,154 - INFO - 开始获取 36 个PID的详细信息...
+2025-03-25 02:22:49,521 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1840650&page=1&perPage=50'
+2025-03-25 02:22:49,522 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,594 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1211149&page=1&perPage=50'
+2025-03-25 02:22:49,596 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,612 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2008587&page=1&perPage=50'
+2025-03-25 02:22:49,613 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,695 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1380224&page=1&perPage=50'
+2025-03-25 02:22:49,696 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,696 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1029905&page=1&perPage=50'
+2025-03-25 02:22:49,697 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,697 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3241747&page=1&perPage=50'
+2025-03-25 02:22:49,698 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,721 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3506053&page=1&perPage=50'
+2025-03-25 02:22:49,722 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,755 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859987&page=1&perPage=50'
+2025-03-25 02:22:49,755 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,768 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1124236&page=1&perPage=50'
+2025-03-25 02:22:49,769 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,776 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1015940&page=1&perPage=50'
+2025-03-25 02:22:49,776 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,791 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1771797&page=1&perPage=50'
+2025-03-25 02:22:49,791 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,900 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1010221&page=1&perPage=50'
+2025-03-25 02:22:49,900 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,903 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2127919&page=1&perPage=50'
+2025-03-25 02:22:49,904 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,905 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2003101&page=1&perPage=50'
+2025-03-25 02:22:49,905 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,941 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819158&page=1&perPage=50'
+2025-03-25 02:22:49,945 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,956 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855018&page=1&perPage=50'
+2025-03-25 02:22:49,956 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,973 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819061&page=1&perPage=50'
+2025-03-25 02:22:49,974 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:49,980 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1272511&page=1&perPage=50'
+2025-03-25 02:22:49,982 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,018 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1132728&page=1&perPage=50'
+2025-03-25 02:22:50,019 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,024 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1835436&page=1&perPage=50'
+2025-03-25 02:22:50,025 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,071 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1021377&page=1&perPage=50'
+2025-03-25 02:22:50,072 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,092 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1000521&page=1&perPage=50'
+2025-03-25 02:22:50,093 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,143 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855947&page=1&perPage=50'
+2025-03-25 02:22:50,144 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,181 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828695&page=1&perPage=50'
+2025-03-25 02:22:50,182 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,182 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1043797&page=1&perPage=50'
+2025-03-25 02:22:50,189 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,192 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1818183&page=1&perPage=50'
+2025-03-25 02:22:50,193 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,273 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859429&page=1&perPage=50'
+2025-03-25 02:22:50,274 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,294 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1118298&page=1&perPage=50'
+2025-03-25 02:22:50,294 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,315 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1820380&page=1&perPage=50'
+2025-03-25 02:22:50,316 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,331 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1834731&page=1&perPage=50'
+2025-03-25 02:22:50,332 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,346 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1365467&page=1&perPage=50'
+2025-03-25 02:22:50,347 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,364 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1831652&page=1&perPage=50'
+2025-03-25 02:22:50,365 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,405 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2314599&page=1&perPage=50'
+2025-03-25 02:22:50,406 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,411 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828597&page=1&perPage=50'
+2025-03-25 02:22:50,412 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,416 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1858170&page=1&perPage=50'
+2025-03-25 02:22:50,418 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,429 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1090805&page=1&perPage=50'
+2025-03-25 02:22:50,430 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:22:50,542 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 02:22:50,543 - INFO - 开始处理数据...
+2025-03-25 02:22:50,544 - INFO - 开始加载 JSON 数据...
+2025-03-25 02:22:50,574 - INFO - 开始计算击杀数据...
+2025-03-25 02:22:50,588 - INFO - 开始导出到 Excel...
+2025-03-25 02:22:50,705 - INFO - 数据已成功导出到 D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:22:50,706 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:22:50,707 - INFO - 所有数据处理完成！
+2025-03-25 02:28:23,264 - INFO - 开始收集公会 55258 在 20250323 的数据...
+2025-03-25 02:28:23,265 - INFO - 正在获取公会ID 55258 在 20250323 的数据...
+2025-03-25 02:28:23,639 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/guild_member?gid=55258&day=20250323'
+2025-03-25 02:28:23,641 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:23,643 - INFO - 成功获取数据，找到 36 个PID
+2025-03-25 02:28:23,644 - INFO - 公会数据汇总报告已保存到: D:\Desktop\warpath_data\reports\guild_report_55258_20250323.json
+2025-03-25 02:28:23,644 - INFO - 开始获取 36 个PID的详细信息...
+2025-03-25 02:28:24,008 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1029905&page=1&perPage=50'
+2025-03-25 02:28:24,009 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,021 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1380224&page=1&perPage=50'
+2025-03-25 02:28:24,022 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,049 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1124236&page=1&perPage=50'
+2025-03-25 02:28:24,050 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,069 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3506053&page=1&perPage=50'
+2025-03-25 02:28:24,070 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,076 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1840650&page=1&perPage=50'
+2025-03-25 02:28:24,077 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,077 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2008587&page=1&perPage=50'
+2025-03-25 02:28:24,078 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,081 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1211149&page=1&perPage=50'
+2025-03-25 02:28:24,081 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,108 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1015940&page=1&perPage=50'
+2025-03-25 02:28:24,110 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,136 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=3241747&page=1&perPage=50'
+2025-03-25 02:28:24,136 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,147 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859987&page=1&perPage=50'
+2025-03-25 02:28:24,147 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,234 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2003101&page=1&perPage=50'
+2025-03-25 02:28:24,234 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,268 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819158&page=1&perPage=50'
+2025-03-25 02:28:24,268 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,331 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1771797&page=1&perPage=50'
+2025-03-25 02:28:24,332 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,377 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2127919&page=1&perPage=50'
+2025-03-25 02:28:24,378 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,390 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1010221&page=1&perPage=50'
+2025-03-25 02:28:24,391 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,403 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1835436&page=1&perPage=50'
+2025-03-25 02:28:24,403 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,493 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1272511&page=1&perPage=50'
+2025-03-25 02:28:24,493 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,499 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1819061&page=1&perPage=50'
+2025-03-25 02:28:24,499 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,506 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1021377&page=1&perPage=50'
+2025-03-25 02:28:24,507 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,512 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855018&page=1&perPage=50'
+2025-03-25 02:28:24,512 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,541 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1132728&page=1&perPage=50'
+2025-03-25 02:28:24,545 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,593 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1818183&page=1&perPage=50'
+2025-03-25 02:28:24,595 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,597 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1855947&page=1&perPage=50'
+2025-03-25 02:28:24,597 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,665 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1000521&page=1&perPage=50'
+2025-03-25 02:28:24,666 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,684 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828695&page=1&perPage=50'
+2025-03-25 02:28:24,687 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,737 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1043797&page=1&perPage=50'
+2025-03-25 02:28:24,738 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,747 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1859429&page=1&perPage=50'
+2025-03-25 02:28:24,748 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,794 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1831652&page=1&perPage=50'
+2025-03-25 02:28:24,795 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,806 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1118298&page=1&perPage=50'
+2025-03-25 02:28:24,806 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,871 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=2314599&page=1&perPage=50'
+2025-03-25 02:28:24,872 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,875 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1365467&page=1&perPage=50'
+2025-03-25 02:28:24,875 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,881 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1820380&page=1&perPage=50'
+2025-03-25 02:28:24,882 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,900 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1834731&page=1&perPage=50'
+2025-03-25 02:28:24,901 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,909 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1828597&page=1&perPage=50'
+2025-03-25 02:28:24,909 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,924 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1090805&page=1&perPage=50'
+2025-03-25 02:28:24,925 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:24,943 - WARNING - 响应MIME类型不是JSON: 200, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://yx.dmzgame.com/warpath/pid_detail?pid=1858170&page=1&perPage=50'
+2025-03-25 02:28:24,945 - INFO - 成功解析响应内容为JSON
+2025-03-25 02:28:25,057 - INFO - PID数据已保存到: D:\Desktop\warpath_data\pid_data\hi20pids_data.json
+2025-03-25 02:28:25,059 - INFO - 开始处理数据...
+2025-03-25 02:28:25,059 - INFO - 开始加载 JSON 数据...
+2025-03-25 02:28:25,100 - INFO - 开始计算击杀数据...
+2025-03-25 02:28:25,119 - INFO - 开始导出到 Excel...
+2025-03-25 02:28:25,251 - INFO - 数据已成功导出到 D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:28:25,252 - INFO - 数据处理完成，报告已保存到: D:\Desktop\warpath_data\reports\final_report_55258_20250323.xlsx
+2025-03-25 02:28:25,252 - INFO - 所有数据处理完成！
