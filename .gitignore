@@ -1,3 +1,2 @@
-.app.log
-/__pycache__
-.warpath_data.log
+*.log 
+__pycache__/
