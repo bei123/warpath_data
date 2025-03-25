@@ -206,6 +206,66 @@ def process_user_data(user_data: Dict, start_timestamp: int, end_timestamp: int)
         return summary_stats, daily_stats, latest_nick, end_max_power
     return None, [], latest_nick, end_max_power
 
+def calculate_guild_stats(results: Dict) -> Dict:
+    """计算公会总体统计信息"""
+    guild_stats = {}
+    
+    for user, stats in results.items():
+        guild_name = stats.get("公会名称", "未知公会")
+        if guild_name not in guild_stats:
+            guild_stats[guild_name] = {
+                "成员数": 0,
+                "总击杀数": 0,
+                "总被击杀数": 0,
+                "平均击杀比": 0,
+                "总活跃天数": 0,
+                "平均活跃度": 0,
+                "高活跃成员数": 0,
+                "中活跃成员数": 0,
+                "低活跃成员数": 0,
+                "平均战力": 0,
+                "最高战力": 0,
+                "战力分布": defaultdict(int)
+            }
+        
+        guild_stats[guild_name]["成员数"] += 1
+        guild_stats[guild_name]["总击杀数"] += stats["赛季总击杀数"]
+        guild_stats[guild_name]["总被击杀数"] += stats["赛季总被击杀数"]
+        guild_stats[guild_name]["总活跃天数"] += stats["活跃天数"]
+        guild_stats[guild_name]["平均活跃度"] += stats["平均战斗活跃度"]
+        guild_stats[guild_name]["平均战力"] += stats["结束时的最高战力"]
+        guild_stats[guild_name]["最高战力"] = max(
+            guild_stats[guild_name]["最高战力"],
+            stats["结束时的最高战力"]
+        )
+        
+        # 统计活跃度分布
+        if stats["平均战斗活跃度"] >= 60:
+            guild_stats[guild_name]["高活跃成员数"] += 1
+        elif stats["平均战斗活跃度"] >= 30:
+            guild_stats[guild_name]["中活跃成员数"] += 1
+        else:
+            guild_stats[guild_name]["低活跃成员数"] += 1
+        
+        # 统计战力分布
+        power_group = stats["战力组别"]
+        guild_stats[guild_name]["战力分布"][power_group] += 1
+    
+    # 计算平均值
+    for guild_name in guild_stats:
+        member_count = guild_stats[guild_name]["成员数"]
+        if member_count > 0:
+            guild_stats[guild_name]["平均击杀比"] = (
+                guild_stats[guild_name]["总击杀数"] /
+                guild_stats[guild_name]["总被击杀数"]
+                if guild_stats[guild_name]["总被击杀数"] > 0
+                else float('inf')
+            )
+            guild_stats[guild_name]["平均活跃度"] /= member_count
+            guild_stats[guild_name]["平均战力"] /= member_count
+    
+    return guild_stats
+
 def calculate_kills(data: Dict, start_date: str, end_date: str) -> Tuple[Dict, Dict]:
     """计算指定时间范围内的击杀与被击杀数据"""
     start_timestamp = int(datetime.strptime(start_date, "%Y-%m-%d").strftime(DATE_FORMAT))
@@ -219,6 +279,7 @@ def calculate_kills(data: Dict, start_date: str, end_date: str) -> Tuple[Dict, D
             "活跃天数": 0,
             "每日统计": [],
             "结束时的最高战力": 0,
+            "公会名称": "未知公会"
         }
     )
 
@@ -270,7 +331,7 @@ class ExcelExporter:
         self.content_format = self.workbook.add_format(CONTENT_FORMAT)
         self.alternate_row_format = self.workbook.add_format(ALTERNATE_ROW_FORMAT)
 
-    def export(self, results: Dict, power_group_stats: Dict):
+    def export(self, results: Dict, power_group_stats: Dict, compare: bool = True):
         """导出数据到 Excel"""
         main_table, daily_stats_table, power_group_tables = self._prepare_data(results, power_group_stats)
 
@@ -296,6 +357,8 @@ class ExcelExporter:
                 "赛季击杀/被击杀比": stats["赛季击杀/被击杀比"],
                 "活跃天数": stats["活跃天数"],
                 "结束时的最高战力": stats["结束时的最高战力"],
+                "战力组别": stats["战力组别"],
+                "平均战斗活跃度": stats["平均战斗活跃度"]
             })
             daily_stats_table.extend([
                 {
@@ -511,7 +574,7 @@ class ExcelExporter:
         chart6.set_y_axis({"name": "最高战力"})
         writer.sheets["用户总览"].insert_chart("G74", chart6)
 
-def main(file_path: str, start_date: str, end_date: str, output_file: str):
+def main(file_path: str, start_date: str, end_date: str, output_file: str, compare: bool = True):
     """主函数"""
     try:
         logging.info("开始加载 JSON 数据...")
@@ -520,7 +583,7 @@ def main(file_path: str, start_date: str, end_date: str, output_file: str):
         results, power_group_stats = calculate_kills(data, start_date, end_date)
         logging.info("开始导出到 Excel...")
         exporter = ExcelExporter(output_file)
-        exporter.export(results, power_group_stats)
+        exporter.export(results, power_group_stats, compare)
         logging.info(f"数据已成功导出到 {output_file}")
     except Exception as e:
         logging.error(f"发生错误: {e}", exc_info=True)
