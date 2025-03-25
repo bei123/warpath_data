@@ -116,9 +116,15 @@ class WarpathDataProcessor:
             
             # 根据是否指定公会ID选择数据文件
             if guild_id is not None:
-                pid_file = self.pid_data_dir / f"guild_{guild_id}_pids_data.json"
+                # 从输出文件名中提取公会名称
+                output_path = Path(output_file)
+                gnick = output_path.stem.split('_')[2]  # 从文件名中获取公会名称
+                pid_file = self.pid_data_dir / f"{gnick}_{guild_id}_pids_data.json"
             else:
                 pid_file = self.pid_data_dir / "hi20pids_data.json"
+            
+            if not pid_file.exists():
+                raise FileNotFoundError(f"找不到PID数据文件: {pid_file}")
             
             process_data(
                 str(pid_file),
@@ -138,8 +144,16 @@ class WarpathDataProcessor:
             # 1. 收集公会数据
             guild_results = await self.collect_guild_data(gid, current_date)
             
+            # 获取公会名称
+            gnick = "Unknown"
+            if guild_results["success"] and "data_file" in guild_results:
+                with open(guild_results["data_file"], "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    if "Data" in data and len(data["Data"]) > 0:
+                        gnick = data["Data"][0].get("gnick", "Unknown")
+            
             # 保存公会数据汇总报告
-            report_file = self.report_dir / f"guild_report_{gid}_{current_date}.json"
+            report_file = self.report_dir / f"{gnick}_report_{gid}_{current_date}.json"
             with open(report_file, "w", encoding="utf-8") as f:
                 json.dump(guild_results, f, ensure_ascii=False, indent=4)
             logging.info(f"公会数据汇总报告已保存到: {report_file}")
@@ -148,10 +162,10 @@ class WarpathDataProcessor:
             pid_data = await self.collect_pid_details([guild_results])
             
             # 3. 处理数据并生成最终报告
-            output_file = self.report_dir / f"final_report_{gid}_{current_date}.xlsx"
+            output_file = self.report_dir / f"final_report_{gnick}_{gid}_{current_date}.xlsx"
             self.process_data(start_date, end_date, str(output_file), compare=False, guild_id=gid)
             
-            logging.info(f"公会 {gid} 的数据处理完成！")
+            logging.info(f"公会 {gnick}({gid}) 的数据处理完成！")
             
         except Exception as e:
             logging.error(f"处理公会 {gid} 数据时发生错误: {e}", exc_info=True)
@@ -162,6 +176,23 @@ class WarpathDataProcessor:
         try:
             # 1. 收集所有公会数据
             guild_results = await self.collect_multiple_guilds_data(gids, current_date)
+            
+            # 获取所有公会名称
+            guild_names = {}
+            for gid, result in guild_results.items():
+                if result["success"] and "data_file" in result:
+                    try:
+                        with open(result["data_file"], "r", encoding="utf-8") as f:
+                            data = json.load(f)
+                            if "Data" in data and len(data["Data"]) > 0:
+                                guild_names[gid] = data["Data"][0].get("gnick", "Unknown")
+                            else:
+                                guild_names[gid] = "Unknown"
+                    except Exception as e:
+                        logging.warning(f"获取公会 {gid} 名称失败: {e}")
+                        guild_names[gid] = "Unknown"
+                else:
+                    guild_names[gid] = "Unknown"
             
             # 保存公会数据汇总报告
             report_file = self.report_dir / f"guilds_report_{current_date}.json"
@@ -181,14 +212,14 @@ class WarpathDataProcessor:
                 }
                 
                 # 保存该公会的PID数据
-                guild_pid_file = self.pid_data_dir / f"guild_{gid}_pids_data.json"
+                guild_pid_file = self.pid_data_dir / f"{guild_names[gid]}_{gid}_pids_data.json"
                 with open(guild_pid_file, "w", encoding="utf-8") as f:
                     json.dump(guild_pid_data, f, ensure_ascii=False, indent=4)
                 
                 # 处理数据并生成该公会的报告
-                output_file = self.report_dir / f"final_report_guild_{gid}_{current_date}.xlsx"
+                output_file = self.report_dir / f"final_report_{guild_names[gid]}_{gid}_{current_date}.xlsx"
                 self.process_data(start_date, end_date, str(output_file), compare=False, guild_id=gid)
-                logging.info(f"公会 {gid} 的报告已生成: {output_file}")
+                logging.info(f"公会 {guild_names[gid]}({gid}) 的报告已生成: {output_file}")
             
             logging.info("所有公会的数据处理完成！")
             

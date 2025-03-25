@@ -414,7 +414,7 @@ class ExcelExporter:
         for row_num in range(1, len(daily_stats_df) + 1):
             user = daily_stats_df.iloc[row_num - 1, 0]
             if user != current_user:
-                if current_user is not None:
+                if current_user is not None and row_num - 1 > start_row:
                     worksheet_daily.merge_range(
                         start_row, 0, row_num - 1, 0, current_user, self.content_format
                     )
@@ -430,7 +430,7 @@ class ExcelExporter:
                     row_num, col_num, daily_stats_df.iloc[row_num - 1, col_num], cell_format
                 )
 
-        if current_user is not None:
+        if current_user is not None and len(daily_stats_df) > start_row:
             worksheet_daily.merge_range(
                 start_row, 0, len(daily_stats_df), 0, current_user, self.content_format
             )
@@ -471,7 +471,7 @@ class ExcelExporter:
             for row_num in range(1, len(group_df) + 1):
                 user = group_df.iloc[row_num - 1, 0]
                 if user != current_user:
-                    if current_user is not None:
+                    if current_user is not None and row_num - 1 > start_row:
                         worksheet_group.merge_range(
                             start_row, 0, row_num - 1, 0, current_user, self.content_format
                         )
@@ -483,7 +483,7 @@ class ExcelExporter:
                     )
                     worksheet_group.write(row_num, col_num, group_df.iloc[row_num - 1, col_num], cell_format)
 
-            if current_user is not None:
+            if current_user is not None and len(group_df) > start_row:
                 worksheet_group.merge_range(
                     start_row, 0, len(group_df), 0, current_user, self.content_format
                 )
