@@ -19,7 +19,9 @@ class GuildDataFetcher:
     def __init__(self, base_url: str = "https://yx.dmzgame.com/warpath", max_concurrent: int = 10):
         self.base_url = base_url
         self.output_dir = Path("guild_data")
+        self.pid_data_dir = Path("pid_data")  # 添加pid_data目录
         self.output_dir.mkdir(exist_ok=True)
+        self.pid_data_dir.mkdir(exist_ok=True)  # 创建pid_data目录
         self.max_concurrent = max_concurrent
         self.session = None
         self.timeout = ClientTimeout(total=30)  # 30秒超时
@@ -167,8 +169,16 @@ class GuildDataFetcher:
         if not pids:
             return {"success": False, "message": "未找到有效的pid数据"}
         
+        # 获取公会名称
+        gnick = "Unknown"
+        if "Data" in data and len(data["Data"]) > 0:
+            gnick = data["Data"][0].get("gnick", "Unknown")
+        
         # 保存原始数据
         filepath = self.save_data(data, gid, day)
+        
+        # 获取PID详细信息
+        pid_data = await self.fetch_pid_details(pids, self.pid_data_dir, gnick, gid)
         
         return {
             "success": True,
@@ -176,7 +186,8 @@ class GuildDataFetcher:
             "day": day,
             "pids": pids,
             "pid_count": len(pids),
-            "data_file": filepath
+            "data_file": filepath,
+            "gnick": gnick
         }
 
     async def fetch_pid_detail(self, pid: int) -> tuple[int, Dict[str, Any]]:
@@ -189,12 +200,14 @@ class GuildDataFetcher:
             return pid, {"error": "获取数据失败"}
         return pid, data
 
-    async def fetch_pid_details(self, pids: List[int], output_dir: Path) -> Dict[str, Any]:
+    async def fetch_pid_details(self, pids: List[int], output_dir: Path, gnick: str = None, gid: int = None) -> Dict[str, Any]:
         """并发获取PID详细信息
         
         Args:
             pids (List[int]): PID列表
             output_dir (Path): 输出目录
+            gnick (str): 公会名称
+            gid (int): 公会ID
             
         Returns:
             Dict[str, Any]: 获取到的数据
@@ -218,7 +231,13 @@ class GuildDataFetcher:
         data_to_save = {pid: data for pid, data in results}
         
         # 保存数据
-        output_file = output_dir / "hi20pids_data.json"
+        if gnick and gid:
+            # 使用公会名称和ID构建文件名，并保存到pid_data目录
+            output_file = self.pid_data_dir / f"{gnick}_{gid}_pids_data.json"
+        else:
+            # 如果没有公会信息，使用通用文件名
+            output_file = self.pid_data_dir / "hi20pids_data.json"
+            
         with open(output_file, "w", encoding="utf-8") as json_file:
             json.dump(data_to_save, json_file, ensure_ascii=False, indent=4)
         

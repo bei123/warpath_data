@@ -74,6 +74,7 @@ class WarpathDataProcessor:
         """收集单个公会数据"""
         async with GuildDataFetcher(max_concurrent=self.max_concurrent) as fetcher:
             fetcher.output_dir = self.guild_data_dir
+            fetcher.pid_data_dir = self.pid_data_dir  # 设置pid_data目录
             fetcher.max_retries = self.max_retries
             fetcher.retry_delay = self.retry_delay
             
@@ -118,13 +119,26 @@ class WarpathDataProcessor:
             if guild_id is not None:
                 # 从输出文件名中提取公会名称
                 output_path = Path(output_file)
-                gnick = output_path.stem.split('_')[2]  # 从文件名中获取公会名称
+                filename_parts = output_path.stem.split('_')
+                if len(filename_parts) >= 3:
+                    gnick = filename_parts[2]  # 从文件名中获取公会名称
+                else:
+                    gnick = "Unknown"
+                
+                # 使用公会名称构建PID数据文件路径
                 pid_file = self.pid_data_dir / f"{gnick}_{guild_id}_pids_data.json"
+                logging.info(f"正在查找PID数据文件: {pid_file}")
+                
+                # 如果找不到特定公会的PID文件，尝试使用通用PID文件
+                if not pid_file.exists():
+                    logging.warning(f"找不到特定公会的PID数据文件: {pid_file}，尝试使用通用PID文件")
+                    pid_file = self.pid_data_dir / "hi20pids_data.json"
+                    if not pid_file.exists():
+                        raise FileNotFoundError(f"找不到PID数据文件: {pid_file}")
             else:
                 pid_file = self.pid_data_dir / "hi20pids_data.json"
-            
-            if not pid_file.exists():
-                raise FileNotFoundError(f"找不到PID数据文件: {pid_file}")
+                if not pid_file.exists():
+                    raise FileNotFoundError(f"找不到PID数据文件: {pid_file}")
             
             process_data(
                 str(pid_file),

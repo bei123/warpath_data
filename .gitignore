@@ -1,3 +1,8 @@
 *.log 
 __pycache__/
 *.pyc
+pid_data/
+guild_data/
+*.json
+warpath_data/
+_pycache_/
