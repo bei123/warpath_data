@@ -44,6 +44,24 @@
   aiohttp
   ```
 
+### 安装方法
+
+1. 克隆或下载项目代码
+
+2. 安装依赖包：
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. 运行程序：
+   ```bash
+   # 使用图形界面
+   python gui_qt.py
+   
+   # 或使用命令行
+   python main.py [参数]
+   ```
+
 ## 使用方法
 
 ### 图形界面启动
