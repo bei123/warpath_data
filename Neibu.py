@@ -115,6 +115,7 @@ def calculate_daily_stats(entry: Dict, start_timestamp: int, end_timestamp: int)
         daily_kill_ratio = daily_kills / daily_deaths if daily_deaths > 0 else float('inf')
         max_power = entry.get("maxpower", 0)
         power_growth = entry.get("power_growth", 0)  # 每日战力增长
+        tech_power = entry.get("powers", {}).get("tech", 0)  # 获取科技战力
         
         # 计算战斗活跃度得分（0-100）
         battle_score = min(100, (daily_kills / 200 + daily_deaths / 300) * 50)
@@ -126,7 +127,8 @@ def calculate_daily_stats(entry: Dict, start_timestamp: int, end_timestamp: int)
             "当天击杀比": daily_kill_ratio,
             "当天最高战力": max_power,
             "战力增长": power_growth,
-            "战斗活跃度": battle_score
+            "战斗活跃度": battle_score,
+            "科技战力": tech_power  # 添加科技战力
         }
     return None
 
@@ -140,6 +142,7 @@ def calculate_summary_stats(daily_stats: List[Dict], max_power: float) -> Dict:
             "活跃天数": 0,
             "战力组别": get_power_group(max_power),
             "平均战斗活跃度": 0,
+            "科技战力": 0  # 添加科技战力
         }
 
     # 使用numpy进行向量化计算
@@ -147,6 +150,7 @@ def calculate_summary_stats(daily_stats: List[Dict], max_power: float) -> Dict:
     deaths = np.array([stat["当天死亡"] for stat in daily_stats])
     power_growths = np.array([stat.get("战力增长", 0) for stat in daily_stats])
     battle_scores = np.array([stat.get("战斗活跃度", 0) for stat in daily_stats])
+    tech_powers = np.array([stat.get("科技战力", 0) for stat in daily_stats])  # 获取科技战力数组
     
     total_kills = np.sum(kills)
     total_deaths = np.sum(deaths)
@@ -179,6 +183,7 @@ def calculate_summary_stats(daily_stats: List[Dict], max_power: float) -> Dict:
         "高活跃天数": int(np.sum(battle_scores >= 60)),  # 战斗活跃度>=60的天数
         "中活跃天数": int(np.sum((battle_scores >= 30) & (battle_scores < 60))),  # 战斗活跃度30-60的天数
         "低活跃天数": int(np.sum(battle_scores < 30)),  # 战斗活跃度<30的天数
+        "科技战力": int(np.max(tech_powers))  # 添加科技战力（取最大值）
     }
 
 def process_user_data(user_data: Dict, start_timestamp: int, end_timestamp: int) -> Tuple[Dict, List[Dict], str, float]:
@@ -358,7 +363,8 @@ class ExcelExporter:
                 "活跃天数": stats["活跃天数"],
                 "结束时的最高战力": stats["结束时的最高战力"],
                 "战力组别": stats["战力组别"],
-                "平均战斗活跃度": stats["平均战斗活跃度"]
+                "平均战斗活跃度": stats["平均战斗活跃度"],
+                "科技战力": stats["科技战力"]  # 添加科技战力
             })
             daily_stats_table.extend([
                 {
@@ -368,6 +374,7 @@ class ExcelExporter:
                     "当天死亡": stat["当天死亡"],
                     "当天击杀比": stat["当天击杀比"],
                     "当天最高战力": stat["当天最高战力"],
+                    "科技战力": stat["科技战力"]  # 添加科技战力
                 }
                 for stat in stats["每日统计"]
             ])
@@ -444,9 +451,21 @@ class ExcelExporter:
             group_table = []
             for user, stats in group_data.items():
                 for stat in stats:
+                    # 修正日期格式为字符串
+                    date_value = stat["日期"]
+                    if hasattr(date_value, 'strftime'):
+                        date_str = date_value.strftime('%Y-%m-%d')
+                    else:
+                        # 兼容字符串或数字类型
+                        try:
+                            date_str = str(date_value)
+                            if len(date_str) == 8 and date_str.isdigit():
+                                date_str = datetime.strptime(date_str, '%Y%m%d').strftime('%Y-%m-%d')
+                        except Exception:
+                            pass
                     group_table.append({
                         "用户": user,
-                        "日期": stat["日期"],
+                        "日期": date_str,
                         "当天击杀": stat["当天击杀"],
                         "当天死亡": stat["当天死亡"],
                         "赛季总击杀": "",
