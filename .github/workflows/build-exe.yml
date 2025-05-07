@@ -8,6 +8,9 @@ on:
       - 'requirements.txt'
       - '.github/workflows/build-exe.yml'
       - 'icon.py'
+      - 'Neibu.py'
+      - 'data01.py'
+      - 'main.py'
 
 jobs:
   build:
