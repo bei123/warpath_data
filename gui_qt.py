@@ -6,7 +6,8 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                            QHBoxLayout, QLabel, QLineEdit, QPushButton, 
                            QTextEdit, QFrame, QFileDialog, QMessageBox,
                            QGroupBox, QGridLayout, QSpinBox, QScrollArea,
-                           QProgressBar, QCheckBox, QDesktopWidget, QDateEdit)
+                           QProgressBar, QCheckBox, QDesktopWidget, QDateEdit,
+                           QRadioButton)
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QSize, QDate
 from PyQt5.QtGui import QFont, QPalette, QColor, QScreen
 from main import WarpathDataProcessor
@@ -133,9 +134,13 @@ class WarpathDataGUI(QMainWindow):
         """)
         main_layout.addWidget(title_label)
         
+        # 创建模式选择区域
+        mode_group = self.create_mode_group(base_font_size, window_width, window_height)
+        main_layout.addWidget(mode_group)
+        
         # 创建输入区域
-        input_group = self.create_input_group(base_font_size, window_width, window_height)
-        main_layout.addWidget(input_group)
+        self.input_group = self.create_input_group(base_font_size, window_width, window_height)
+        main_layout.addWidget(self.input_group)
         
         # 创建日志区域
         log_group = self.create_log_group(base_font_size, window_width, window_height)
@@ -210,173 +215,149 @@ class WarpathDataGUI(QMainWindow):
             QTextEdit {{
                 border: 2px solid #e9ecef;
                 border-radius: {int(base_font_size * 0.5)}px;
+                padding: {int(base_font_size * 0.6)}px;
                 background-color: white;
-                padding: {int(base_font_size * 0.8)}px;
-                font-family: 'Consolas', monospace;
-                font-size: {int(base_font_size * 0.9)}px;
-                line-height: 1.5;
+                font-size: {base_font_size}px;
             }}
             QProgressBar {{
                 border: 2px solid #e9ecef;
                 border-radius: {int(base_font_size * 0.5)}px;
                 text-align: center;
-                background-color: #f8f9fa;
-                height: {int(base_font_size * 1.5)}px;
+                background-color: white;
+                font-size: {base_font_size}px;
             }}
             QProgressBar::chunk {{
                 background-color: #3498db;
-                border-radius: {int(base_font_size * 0.3)}px;
+                border-radius: {int(base_font_size * 0.5)}px;
             }}
-            QCheckBox {{
+            QRadioButton {{
                 font-size: {base_font_size}px;
                 color: #2c3e50;
             }}
-            QCheckBox::indicator {{
-                width: {int(base_font_size * 1.4)}px;
-                height: {int(base_font_size * 1.4)}px;
-                border-radius: {int(base_font_size * 0.3)}px;
-                border: 2px solid #e9ecef;
-            }}
-            QCheckBox::indicator:checked {{
-                background-color: #3498db;
-                border: 2px solid #3498db;
-            }}
-            QCheckBox::indicator:unchecked:hover {{
-                border: 2px solid #3498db;
-            }}
-            QScrollBar:vertical {{
-                border: none;
-                background-color: #f8f9fa;
-                width: {int(base_font_size * 0.8)}px;
-                margin: 0;
-            }}
-            QScrollBar::handle:vertical {{
-                background-color: #cbd5e0;
-                border-radius: {int(base_font_size * 0.4)}px;
-                min-height: {int(base_font_size * 1.5)}px;
-            }}
-            QScrollBar::handle:vertical:hover {{
-                background-color: #a0aec0;
-            }}
-            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {{
-                height: 0;
+            QRadioButton::indicator {{
+                width: {int(base_font_size * 1.2)}px;
+                height: {int(base_font_size * 1.2)}px;
             }}
         """)
         
-        # 设置日志处理器
+        # 初始化变量
+        self.analysis_thread = None
+        self.current_mode = "single"  # 默认模式
         self.setup_logging()
         
-        # 初始化分析线程
-        self.analysis_thread = None
+        # 设置默认日期为今天
+        today = datetime.now()
+        self.date_edit.setDate(QDate(today.year, today.month, today.day))
 
-    def create_input_group(self, base_font_size, window_width, window_height):
-        group = QGroupBox("输入参数")
-        layout = QGridLayout()
-        layout.setSpacing(int(window_height * 0.015))
-        layout.setContentsMargins(
-            int(window_width * 0.015),
-            int(window_height * 0.015),
-            int(window_width * 0.015),
-            int(window_height * 0.015)
-        )
+    def create_mode_group(self, base_font_size, window_width, window_height):
+        """创建模式选择组"""
+        group = QGroupBox("选择分析模式")
+        layout = QHBoxLayout()
         
-        # 公会ID输入
-        layout.addWidget(QLabel("公会ID:"), 0, 0)
-        self.gid_edit = QLineEdit()
-        self.gid_edit.setPlaceholderText("单个公会ID")
-        self.gid_edit.textChanged.connect(self.on_input_changed)
-        layout.addWidget(self.gid_edit, 0, 1)
+        # 创建单选按钮
+        self.single_mode_radio = QRadioButton("单个公会分析")
+        self.multiple_mode_radio = QRadioButton("多个公会分析")
+        self.all_guilds_radio = QRadioButton("全服联盟分析")
         
-        # 多公会ID输入
-        layout.addWidget(QLabel("多公会ID:"), 1, 0)
-        self.gids_edit = QLineEdit()
-        self.gids_edit.setPlaceholderText("多个公会ID，用逗号分隔")
-        self.gids_edit.textChanged.connect(self.on_input_changed)
-        layout.addWidget(self.gids_edit, 1, 1)
+        # 设置默认选中
+        self.single_mode_radio.setChecked(True)
         
-        # 当前日期
-        layout.addWidget(QLabel("当前日期:"), 2, 0)
-        self.current_date_edit = QDateEdit()
-        self.current_date_edit.setCalendarPopup(True)
-        self.current_date_edit.setDisplayFormat("yyyyMMdd")
-        self.current_date_edit.setDate(QDate.currentDate())
-        layout.addWidget(self.current_date_edit, 2, 1)
+        # 连接信号
+        self.single_mode_radio.toggled.connect(lambda: self.on_mode_changed("single"))
+        self.multiple_mode_radio.toggled.connect(lambda: self.on_mode_changed("multiple"))
+        self.all_guilds_radio.toggled.connect(lambda: self.on_mode_changed("all_guilds"))
         
-        # 开始日期
-        layout.addWidget(QLabel("开始日期:"), 3, 0)
-        self.start_date_edit = QDateEdit()
-        self.start_date_edit.setCalendarPopup(True)
-        self.start_date_edit.setDisplayFormat("yyyyMMdd")
-        self.start_date_edit.setDate(QDate.currentDate())
-        layout.addWidget(self.start_date_edit, 3, 1)
-        
-        # 结束日期
-        layout.addWidget(QLabel("结束日期:"), 4, 0)
-        self.end_date_edit = QDateEdit()
-        self.end_date_edit.setCalendarPopup(True)
-        self.end_date_edit.setDisplayFormat("yyyyMMdd")
-        self.end_date_edit.setDate(QDate.currentDate())
-        layout.addWidget(self.end_date_edit, 4, 1)
-        
-        # 输出目录
-        layout.addWidget(QLabel("输出目录:"), 5, 0)
-        output_layout = QHBoxLayout()
-        output_layout.setSpacing(10)
-        self.output_dir_edit = QLineEdit()
-        self.output_dir_edit.setText("warpath_data")
-        output_layout.addWidget(self.output_dir_edit)
-        browse_btn = QPushButton("浏览")
-        browse_btn.setMinimumWidth(80)
-        browse_btn.clicked.connect(self.browse_output_dir)
-        output_layout.addWidget(browse_btn)
-        layout.addLayout(output_layout, 5, 1)
-        
-        # 最大并发数
-        layout.addWidget(QLabel("最大并发数:"), 6, 0)
-        self.max_concurrent_spin = QSpinBox()
-        self.max_concurrent_spin.setRange(1, 20)
-        self.max_concurrent_spin.setValue(10)
-        layout.addWidget(self.max_concurrent_spin, 6, 1)
-        
-        # 最大重试次数
-        layout.addWidget(QLabel("最大重试次数:"), 7, 0)
-        self.max_retries_spin = QSpinBox()
-        self.max_retries_spin.setRange(1, 10)
-        self.max_retries_spin.setValue(3)
-        layout.addWidget(self.max_retries_spin, 7, 1)
-        
-        # 重试延迟
-        layout.addWidget(QLabel("重试延迟(秒):"), 8, 0)
-        self.retry_delay_spin = QSpinBox()
-        self.retry_delay_spin.setRange(1, 10)
-        self.retry_delay_spin.setValue(2)
-        layout.addWidget(self.retry_delay_spin, 8, 1)
-        
-        # 生成对比报告选项
-        layout.addWidget(QLabel("生成对比报告:"), 9, 0)
-        self.compare_checkbox = QCheckBox()
-        self.compare_checkbox.setChecked(True)
-        self.compare_checkbox.setEnabled(False)
-        layout.addWidget(self.compare_checkbox, 9, 1)
-        
-        # 按钮区域
-        button_layout = QHBoxLayout()
-        button_layout.setSpacing(int(window_width * 0.01))
-        self.start_btn = QPushButton("开始分析")
-        self.start_btn.setMinimumWidth(int(window_width * 0.1))
-        self.start_btn.clicked.connect(self.start_analysis)
-        button_layout.addWidget(self.start_btn)
-        
-        self.clear_btn = QPushButton("清除日志")
-        self.clear_btn.setMinimumWidth(int(window_width * 0.1))
-        self.clear_btn.clicked.connect(self.clear_log)
-        button_layout.addWidget(self.clear_btn)
-        
-        layout.addLayout(button_layout, 10, 0, 1, 2)
+        # 添加到布局
+        layout.addWidget(self.single_mode_radio)
+        layout.addWidget(self.multiple_mode_radio)
+        layout.addWidget(self.all_guilds_radio)
+        layout.addStretch()
         
         group.setLayout(layout)
         return group
+
+    def create_input_group(self, base_font_size, window_width, window_height):
+        """创建输入区域"""
+        group = QGroupBox("输入参数")
+        layout = QGridLayout()
         
+        # 当前日期
+        date_label = QLabel("当前日期:")
+        self.date_edit = QDateEdit()
+        self.date_edit.setCalendarPopup(True)
+        self.date_edit.setDisplayFormat("yyyyMMdd")
+        layout.addWidget(date_label, 0, 0)
+        layout.addWidget(self.date_edit, 0, 1)
+        
+        # 开始日期（仅单个公会分析显示）
+        start_label = QLabel("开始日期:")
+        self.start_date_edit = QDateEdit()
+        self.start_date_edit.setCalendarPopup(True)
+        self.start_date_edit.setDisplayFormat("yyyyMMdd")
+        layout.addWidget(start_label, 1, 0)
+        layout.addWidget(self.start_date_edit, 1, 1)
+        
+        # 结束日期（仅单个公会分析显示）
+        end_label = QLabel("结束日期:")
+        self.end_date_edit = QDateEdit()
+        self.end_date_edit.setCalendarPopup(True)
+        self.end_date_edit.setDisplayFormat("yyyyMMdd")
+        layout.addWidget(end_label, 2, 0)
+        layout.addWidget(self.end_date_edit, 2, 1)
+        
+        # 公会ID输入
+        gid_label = QLabel("公会ID:")
+        self.gid_input = ModernLineEdit()
+        self.gid_input.setPlaceholderText("输入单个公会ID")
+        layout.addWidget(gid_label, 3, 0)
+        layout.addWidget(self.gid_input, 3, 1)
+        
+        # 多公会ID输入
+        gids_label = QLabel("多个公会ID:")
+        self.gids_input = ModernLineEdit()
+        self.gids_input.setPlaceholderText("输入多个公会ID，用逗号分隔")
+        self.gids_input.setVisible(False)
+        layout.addWidget(gids_label, 4, 0)
+        layout.addWidget(self.gids_input, 4, 1)
+        
+        # 输出目录选择
+        output_label = QLabel("输出目录:")
+        self.output_input = ModernLineEdit()
+        self.output_input.setPlaceholderText("选择输出目录")
+        self.browse_button = ModernButton("浏览")
+        self.browse_button.clicked.connect(self.browse_output_dir)
+        layout.addWidget(output_label, 5, 0)
+        layout.addWidget(self.output_input, 5, 1)
+        layout.addWidget(self.browse_button, 5, 2)
+        
+        # 开始按钮
+        self.start_button = ModernButton("开始分析")
+        self.start_button.clicked.connect(self.start_analysis)
+        layout.addWidget(self.start_button, 6, 0, 1, 3)
+        
+        group.setLayout(layout)
+        return group
+
+    def on_mode_changed(self, mode):
+        """处理模式切换"""
+        self.current_mode = mode
+        # 单个/多公会分析都显示日期区间
+        show_dates = (mode == "single" or mode == "multiple")
+        self.start_date_edit.setVisible(show_dates)
+        self.end_date_edit.setVisible(show_dates)
+        self.gid_input.setVisible(mode == "single")
+        self.gids_input.setVisible(mode == "multiple")
+        # 更新输入框提示文本
+        if mode == "single":
+            self.gid_input.setPlaceholderText("输入单个公会ID")
+        elif mode == "multiple":
+            self.gids_input.setPlaceholderText("输入多个公会ID，用逗号分隔")
+        # 更新开始按钮文本
+        if mode == "all_guilds":
+            self.start_button.setText("获取全服联盟数据")
+        else:
+            self.start_button.setText("开始分析")
+
     def create_log_group(self, base_font_size, window_width, window_height):
         group = QGroupBox("运行日志")
         layout = QVBoxLayout()
@@ -446,116 +427,99 @@ class WarpathDataGUI(QMainWindow):
     def browse_output_dir(self):
         directory = QFileDialog.getExistingDirectory(self, "选择输出目录")
         if directory:
-            self.output_dir_edit.setText(directory)
+            self.output_input.setText(directory)
             
     def clear_log(self):
         self.log_text.clear()
         
-    def on_input_changed(self):
-        gid = self.gid_edit.text().strip()
-        gids = self.gids_edit.text().strip()
-        
-        if gid and gids:
-            self.gids_edit.clear()
-            gids = ""
-        
-        self.compare_checkbox.setEnabled(bool(gids))
-        
-        if not self.compare_checkbox.isEnabled():
-            self.compare_checkbox.setChecked(False)
-
-    def validate_inputs(self):
-        try:
-            # 验证公会ID
-            gid = self.gid_edit.text().strip()
-            gids = self.gids_edit.text().strip()
-            
-            if not gid and not gids:
-                QMessageBox.warning(self, "错误", "请输入公会ID或多公会ID")
-                return False
-                
-            if gid and gids:
-                QMessageBox.warning(self, "错误", "不能同时输入单个公会ID和多公会ID")
-                return False
-                
-            # 验证日期
-            current_date = self.current_date_edit.date().toString("yyyyMMdd")
-            start_date = self.start_date_edit.date().toString("yyyyMMdd")
-            end_date = self.end_date_edit.date().toString("yyyyMMdd")
-            
-            if start_date > end_date:
-                QMessageBox.warning(self, "错误", "开始日期不能晚于结束日期")
-                return False
-                
-            # 验证多公会ID格式
-            if gids:
-                try:
-                    gid_list = [int(gid.strip()) for gid in gids.split(',')]
-                    if len(gid_list) < 2:
-                        QMessageBox.warning(self, "错误", "多公会分析需要至少输入两个公会ID")
-                        return False
-                except ValueError:
-                    QMessageBox.warning(self, "错误", "多公会ID格式错误，请使用数字并用逗号分隔")
-                    return False
-                
-            return True
-        except Exception as e:
-            QMessageBox.warning(self, "错误", f"输入验证失败: {str(e)}")
-            return False
-            
     def start_analysis(self):
+        """开始分析"""
         if not self.validate_inputs():
             return
             
-        # 禁用按钮
-        self.start_btn.setEnabled(False)
-        self.clear_btn.setEnabled(False)
-        self.progress_bar.show()
-        self.progress_label.setText("正在分析数据...")
+        # 禁用开始按钮
+        self.start_button.setEnabled(False)
         
-        # 准备参数
+        # 获取参数
         params = {
-            'current_date': self.current_date_edit.date().toString("yyyyMMdd"),
-            'start_date': self.start_date_edit.date().toString("yyyyMMdd"),
-            'end_date': self.end_date_edit.date().toString("yyyyMMdd"),
-            'output_dir': self.output_dir_edit.text(),
-            'max_concurrent': self.max_concurrent_spin.value(),
-            'max_retries': self.max_retries_spin.value(),
-            'retry_delay': self.retry_delay_spin.value(),
-            'compare': self.compare_checkbox.isChecked()
+            'output_dir': self.output_input.text(),
+            'max_concurrent': 10,
+            'max_retries': 3,
+            'retry_delay': 2,
+            'current_date': self.date_edit.date().toString("yyyyMMdd")
         }
         
-        # 根据输入选择分析模式
-        if self.gid_edit.text().strip():
-            params['gid'] = int(self.gid_edit.text())
+        # 根据模式创建不同的线程
+        if self.current_mode == "single":
+            params['gid'] = int(self.gid_input.text())
+            params['start_date'] = self.start_date_edit.date().toString("yyyyMMdd")
+            params['end_date'] = self.end_date_edit.date().toString("yyyyMMdd")
             self.analysis_thread = SingleGuildAnalysisThread(params)
-        else:
-            params['gids'] = [int(gid.strip()) for gid in self.gids_edit.text().split(',')]
+        elif self.current_mode == "multiple":
+            params['gids'] = [int(gid.strip()) for gid in self.gids_input.text().split(',')]
+            params['start_date'] = self.start_date_edit.date().toString("yyyyMMdd")
+            params['end_date'] = self.end_date_edit.date().toString("yyyyMMdd")
+            params['compare'] = False  # 默认不生成对比报告，如需对比可改为True
             self.analysis_thread = MultipleGuildsAnalysisThread(params)
+        else:  # all_guilds
+            params.update({
+                'wid': 0.1,  # 固定为0.1
+                'ccid': 0,   # 固定为0
+                'rank': 'power',  # 固定为power
+                'is_benfu': 1,    # 固定为1
+                'is_quanfu': 1    # 固定为1
+            })
+            self.analysis_thread = AllGuildsAnalysisThread(params)
         
         # 连接信号
         self.analysis_thread.finished.connect(self.analysis_finished)
         self.analysis_thread.error.connect(self.analysis_error)
         self.analysis_thread.progress.connect(self.update_progress)
         
-        # 启动分析线程
+        # 启动线程
         self.analysis_thread.start()
-        
+
+    def validate_inputs(self):
+        """验证输入"""
+        if not self.output_input.text():
+            QMessageBox.warning(self, "警告", "请选择输出目录")
+            return False
+            
+        if self.current_mode == "single":
+            if not self.gid_input.text():
+                QMessageBox.warning(self, "警告", "请输入公会ID")
+                return False
+            try:
+                int(self.gid_input.text())
+            except ValueError:
+                QMessageBox.warning(self, "警告", "公会ID必须是数字")
+                return False
+                
+        elif self.current_mode == "multiple":
+            if not self.gids_input.text():
+                QMessageBox.warning(self, "警告", "请输入公会ID列表")
+                return False
+            try:
+                [int(gid.strip()) for gid in self.gids_input.text().split(',')]
+            except ValueError:
+                QMessageBox.warning(self, "警告", "公会ID列表格式不正确")
+                return False
+                
+        return True
+
     def update_progress(self, message):
         self.progress_label.setText(message)
         
     def analysis_finished(self):
         # 重新启用按钮
-        self.start_btn.setEnabled(True)
-        self.clear_btn.setEnabled(True)
+        self.start_button.setEnabled(True)
         self.progress_bar.hide()
         self.progress_label.setText("分析完成！")
         QMessageBox.information(self, "成功", "数据分析完成！")
         
     def analysis_error(self, error_msg):
         # 重新启用按钮
-        self.start_btn.setEnabled(True)
-        self.clear_btn.setEnabled(True)
+        self.start_button.setEnabled(True)
         self.progress_bar.hide()
         self.progress_label.setText("分析出错！")
         QMessageBox.critical(self, "错误", f"分析过程中发生错误: {error_msg}")
@@ -640,6 +604,48 @@ class MultipleGuildsAnalysisThread(QThread):
                 self.params['start_date'],
                 self.params['end_date'],
                 self.params['compare']
+            ))
+            
+            loop.close()
+            self.finished.emit()
+        except Exception as e:
+            self.error.emit(str(e))
+
+class AllGuildsAnalysisThread(QThread):
+    finished = pyqtSignal()
+    error = pyqtSignal(str)
+    progress = pyqtSignal(str)
+
+    def __init__(self, params):
+        super().__init__()
+        self.params = params
+        self.is_running = True
+
+    def stop(self):
+        self.is_running = False
+
+    def run(self):
+        try:
+            # 创建事件循环
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            
+            # 创建处理器
+            processor = WarpathDataProcessor(
+                self.params['output_dir'],
+                self.params['max_concurrent'],
+                self.params['max_retries'],
+                self.params['retry_delay']
+            )
+            
+            # 运行分析
+            loop.run_until_complete(processor.collect_all_guilds_data(
+                current_date=self.params['current_date'],
+                wid=self.params['wid'],
+                ccid=self.params['ccid'],
+                rank=self.params['rank'],
+                is_benfu=self.params['is_benfu'],
+                is_quanfu=self.params['is_quanfu']
             ))
             
             loop.close()

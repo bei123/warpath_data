@@ -241,61 +241,111 @@ class WarpathDataProcessor:
             logging.error(f"处理多公会数据时发生错误: {e}", exc_info=True)
             raise
 
+    async def collect_all_guilds_data(self, current_date: str, wid: int = 1, ccid: int = 0, rank: str = "power", is_benfu: int = 1, is_quanfu: int = 0) -> Dict:
+        """收集全服联盟数据
+        
+        Args:
+            current_date (str): 当前日期，格式为YYYYMMDD
+            wid (int): 世界ID
+            ccid (int): 国家ID
+            rank (str): 排名类型
+            is_benfu (int): 是否本服
+            is_quanfu (int): 是否全服
+            
+        Returns:
+            Dict: 处理结果
+        """
+        async with GuildDataFetcher(max_concurrent=self.max_concurrent) as fetcher:
+            fetcher.output_dir = self.guild_data_dir
+            fetcher.max_retries = self.max_retries
+            fetcher.retry_delay = self.retry_delay
+            
+            logging.info(f"开始收集全服联盟数据，日期: {current_date}...")
+            result = await fetcher.fetch_all_guilds(
+                day=current_date,
+                wid=wid,
+                ccid=ccid,
+                rank=rank,
+                is_benfu=is_benfu,
+                is_quanfu=is_quanfu
+            )
+            
+            if result and result["success"]:
+                # 保存统计数据到报告文件
+                stats = result.get("statistics", {})
+                report_file = self.report_dir / f"all_guilds_stats_{current_date}.json"
+                with open(report_file, "w", encoding="utf-8") as f:
+                    json.dump({
+                        "date": current_date,
+                        "wid": wid,
+                        "ccid": ccid,
+                        "statistics": stats,
+                        "raw_data_file": result["file_path"]
+                    }, f, ensure_ascii=False, indent=4)
+                
+                # 输出统计信息
+                logging.info("\n全服联盟数据统计:")
+                logging.info(f"- 总公会数: {stats.get('total_guilds', 0)}")
+                logging.info(f"- 总战力: {stats.get('total_power', 0):,}")
+                logging.info(f"- 总击杀数: {stats.get('total_kills', 0):,}")
+                logging.info(f"- 平均等级: {stats.get('average_level', 0):.2f}")
+                logging.info(f"\n原始数据已保存到: {result['file_path']}")
+                logging.info(f"统计报告已保存到: {report_file}")
+                
+                return result
+            else:
+                error_msg = result.get("message", "获取全服联盟数据失败") if result else "获取全服联盟数据失败"
+                logging.error(error_msg)
+                return {"success": False, "message": error_msg}
+
 async def main_async():
     parser = argparse.ArgumentParser(description="战火数据处理工具")
-    parser.add_argument("--gid", type=str, help="单个公会ID")
-    parser.add_argument("--gids", type=str, help="多个公会ID，用逗号分隔")
-    parser.add_argument("--current-date", type=str, help="当前日期 (YYYYMMDD格式)，默认为今天")
-    parser.add_argument("--start-date", type=str, help="开始日期 (YYYYMMDD格式)，默认为今天")
-    parser.add_argument("--end-date", type=str, help="结束日期 (YYYYMMDD格式)，默认为今天")
-    parser.add_argument("--output-dir", type=str, default="warpath_data", help="输出目录，默认为'warpath_data'")
+    parser.add_argument("--date", type=str, help="指定日期，格式为YYYYMMDD")
+    parser.add_argument("--gids", type=str, help="公会ID列表，用逗号分隔")
+    parser.add_argument("--all-guilds", action="store_true", help="获取全服联盟数据")
+    parser.add_argument("--wid", type=int, default=1, help="世界ID")
+    parser.add_argument("--ccid", type=int, default=0, help="国家ID")
+    parser.add_argument("--rank", type=str, default="power", help="排名类型")
+    parser.add_argument("--is-benfu", type=int, default=1, help="是否本服")
+    parser.add_argument("--is-quanfu", type=int, default=0, help="是否全服")
+    parser.add_argument("--output-dir", type=str, help="输出目录路径")
     parser.add_argument("--max-concurrent", type=int, default=10, help="最大并发请求数")
     parser.add_argument("--max-retries", type=int, default=3, help="最大重试次数")
     parser.add_argument("--retry-delay", type=int, default=2, help="重试延迟（秒）")
-    parser.add_argument("--compare", type=bool, default=True, help="是否生成公会间对比报告")
     
     args = parser.parse_args()
     
-    # 验证参数
-    if not args.gid and not args.gids:
-        parser.error("必须提供 --gid 或 --gids 参数")
-    if args.gid and args.gids:
-        parser.error("不能同时提供 --gid 和 --gids 参数")
-    
-    # 设置默认日期
-    today = datetime.now()
-    if not args.current_date:
-        args.current_date = today.strftime("%Y%m%d")
-    if not args.start_date:
-        args.start_date = today.strftime("%Y%m%d")
-    if not args.end_date:
-        args.end_date = today.strftime("%Y%m%d")
-    
-    # 创建处理器
     processor = WarpathDataProcessor(
-        args.output_dir,
-        args.max_concurrent,
-        args.max_retries,
-        args.retry_delay
+        output_dir=args.output_dir,
+        max_concurrent=args.max_concurrent,
+        max_retries=args.max_retries,
+        retry_delay=args.retry_delay
     )
     
-    # 根据参数选择运行模式
-    if args.gid:
-        await processor.run_single_guild(
-            int(args.gid),
-            args.current_date,
-            args.start_date,
-            args.end_date
+    if not args.date:
+        args.date = datetime.now().strftime("%Y%m%d")
+    
+    if args.all_guilds:
+        # 获取全服联盟数据
+        result = await processor.collect_all_guilds_data(
+            current_date=args.date,
+            wid=args.wid,
+            ccid=args.ccid,
+            rank=args.rank,
+            is_benfu=args.is_benfu,
+            is_quanfu=args.is_quanfu
         )
-    else:
+        if result["success"]:
+            logging.info("全服联盟数据获取成功")
+        else:
+            logging.error(f"全服联盟数据获取失败: {result['message']}")
+    elif args.gids:
+        # 处理指定公会数据
         gids = parse_guild_ids(args.gids)
-        await processor.run_multiple_guilds(
-            gids,
-            args.current_date,
-            args.start_date,
-            args.end_date,
-            args.compare
-        )
+        await processor.run_multiple_guilds(gids, args.date, args.date, args.date)
+    else:
+        parser.print_help()
+        return
 
 def main():
     asyncio.run(main_async())

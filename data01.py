@@ -12,6 +12,9 @@ from concurrent.futures import ThreadPoolExecutor
 from functools import partial
 import time
 from aiohttp import ClientTimeout, ContentTypeError
+import pandas as pd
+from openpyxl.styles import Alignment, Font, PatternFill, Border, Side
+from openpyxl.utils import get_column_letter
 
 class GuildDataFetcher:
     """公会数据获取器"""
@@ -243,6 +246,133 @@ class GuildDataFetcher:
         
         logging.info(f"PID数据已保存到: {output_file}")
         return data_to_save
+
+    async def fetch_all_guilds(self, day: str, wid: int = 1, ccid: int = 0, rank: str = "power", is_benfu: int = 1, is_quanfu: int = 0, page: int = 1, per_page: int = 500) -> Optional[Dict[str, Any]]:
+        """获取全服联盟数据
+        
+        Args:
+            day (str): 日期，格式为YYYYMMDD
+            wid (int): 世界ID
+            ccid (int): 国家ID
+            rank (str): 排名类型
+            is_benfu (int): 是否本服
+            is_quanfu (int): 是否全服
+            page (int): 页码
+            per_page (int): 每页数量
+            
+        Returns:
+            Optional[Dict[str, Any]]: 联盟数据，包含以下字段：
+                - id: 记录ID
+                - day: 日期
+                - wid: 世界ID
+                - ccid: 国家ID
+                - gid: 公会ID
+                - power: 公会战力
+                - sname: 公会简称
+                - fname: 公会全称
+                - owner: 公会所有者
+                - kil: 击杀数
+                - di: 等级
+                - c_power: 战力变化
+                - c_kil: 击杀数变化
+                - created_at: 创建时间
+                - c_di: 等级变化
+        """
+        url = f"{self.base_url}/rank_guild"
+        params = {
+            "day": day,
+            "wid": wid,
+            "ccid": ccid,
+            "rank": rank,
+            "is_benfu": is_benfu,
+            "is_quanfu": is_quanfu,
+            "page": page,
+            "perPage": per_page
+        }
+        
+        data = await self.fetch_with_retry(url, params)
+        if not data:
+            logging.error(f"获取全服联盟数据失败")
+            return None
+            
+        # 验证响应数据格式
+        if not isinstance(data, dict) or "Code" not in data or "Data" not in data:
+            logging.error("响应数据格式不正确")
+            return None
+            
+        if data["Code"] != 0:
+            logging.error(f"API返回错误: {data.get('Message', '未知错误')}")
+            return None
+            
+        # 保存数据到文件
+        filename = f"all_guilds_{day}.json"
+        filepath = self.output_dir / filename
+        with open(filepath, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
+        
+        # 新增：保存为Excel（只保留指定字段）
+        guilds_data = data["Data"]
+        excel_path = self.output_dir / f"all_guilds_{day}.xlsx"
+        # 只保留需要的字段，并设置中文表头和顺序
+        export_fields = [
+            ("wid", "区"),
+            ("gid", "联盟id"),
+            ("sname", "联盟简称"),
+            ("fname", "联盟名称"),
+            ("owner", "盟主"),
+            ("power", "联盟总战力")
+        ]
+        filtered_guilds_data = [
+            {field_cn: guild[field_en] for field_en, field_cn in export_fields if field_en in guild}
+            for guild in guilds_data
+        ]
+        df = pd.DataFrame(filtered_guilds_data, columns=[field_cn for _, field_cn in export_fields])
+        
+        with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
+            df.to_excel(writer, index=False)
+            ws = writer.sheets['Sheet1']
+
+            # 设置表头样式
+            header_font = Font(bold=True, color='FFFFFF')
+            header_fill = PatternFill('solid', fgColor='4F81BD')
+            for cell in ws[1]:
+                cell.font = header_font
+                cell.fill = header_fill
+                cell.alignment = Alignment(horizontal='center', vertical='center')
+
+            # 设置内容居中
+            for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=1, max_col=ws.max_column):
+                for cell in row:
+                    cell.alignment = Alignment(horizontal='center', vertical='center')
+
+            # 自动调整列宽
+            for col in ws.columns:
+                max_length = max(len(str(cell.value)) if cell.value is not None else 0 for cell in col)
+                ws.column_dimensions[get_column_letter(col[0].column)].width = max_length + 2
+
+            # 加边框
+            thin = Side(border_style='thin', color='CCCCCC')
+            for row in ws.iter_rows(min_row=1, max_row=ws.max_row, min_col=1, max_col=ws.max_column):
+                for cell in row:
+                    cell.border = Border(left=thin, right=thin, top=thin, bottom=thin)
+        
+        # 处理数据，添加一些统计信息
+        total_power = sum(guild["power"] for guild in guilds_data)
+        total_kills = sum(guild["kil"] for guild in guilds_data)
+        avg_level = sum(guild["di"] for guild in guilds_data) / len(guilds_data) if guilds_data else 0
+        
+        return {
+            "success": True,
+            "data": data,
+            "file_path": str(filepath),
+            "excel_path": str(excel_path),
+            "statistics": {
+                "total_guilds": len(guilds_data),
+                "total_power": total_power,
+                "total_kills": total_kills,
+                "average_level": round(avg_level, 2)
+            }
+        }
 
 async def process_guild_data_async(fetcher: GuildDataFetcher, gid: int, dates: List[str]) -> List[Dict]:
     """异步处理多个日期的公会数据"""
