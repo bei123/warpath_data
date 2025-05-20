@@ -105,32 +105,36 @@ def validate_date(date_value: str) -> Optional[datetime]:
     except ValueError:
         return None
 
-def calculate_daily_stats(entry: Dict, start_timestamp: int, end_timestamp: int) -> Optional[Dict]:
-    """计算每日统计信息"""
+def calculate_daily_stats(entry: Dict, prev_entry: Optional[Dict] = None) -> Dict:
+    """计算每日统计信息（累计值差值归属于当前日期，负数置0）"""
     day = entry["day"]
     valid_date = validate_date(day)
-    if valid_date and start_timestamp <= day <= end_timestamp:
+    # 默认当天击杀和死亡为0
+    daily_kills = 0
+    daily_deaths = 0
+    # 优先使用c_sumkill/c_die
+    if entry.get("c_sumkill", 0) > 0 or entry.get("c_die", 0) > 0:
         daily_kills = entry.get("c_sumkill", 0)
         daily_deaths = entry.get("c_die", 0)
-        daily_kill_ratio = daily_kills / daily_deaths if daily_deaths > 0 else float('inf')
-        max_power = entry.get("maxpower", 0)
-        power_growth = entry.get("power_growth", 0)  # 每日战力增长
-        tech_power = entry.get("powers", {}).get("tech", 0)  # 获取科技战力
-        
-        # 计算战斗活跃度得分（0-100）
-        battle_score = min(100, (daily_kills / 200 + daily_deaths / 300) * 50)
-        
-        return {
-            "日期": valid_date,
-            "当天击杀": daily_kills,
-            "当天死亡": daily_deaths,
-            "当天击杀比": daily_kill_ratio,
-            "当天最高战力": max_power,
-            "战力增长": power_growth,
-            "战斗活跃度": battle_score,
-            "科技战力": tech_power  # 添加科技战力
-        }
-    return None
+    elif prev_entry is not None:
+        # 用累计值做差，负数置0
+        daily_kills = max(0, entry.get("sumkill", 0) - prev_entry.get("sumkill", 0))
+        daily_deaths = max(0, entry.get("die", 0) - prev_entry.get("die", 0))
+    daily_kill_ratio = daily_kills / daily_deaths if daily_deaths > 0 else float('inf')
+    max_power = entry.get("maxpower", 0)
+    power_growth = entry.get("power_growth", 0)
+    tech_power = entry.get("powers", {}).get("tech", 0)
+    battle_score = min(100, (daily_kills / 200 + daily_deaths / 300) * 50)
+    return {
+        "日期": valid_date,
+        "当天击杀": daily_kills,
+        "当天死亡": daily_deaths,
+        "当天击杀比": daily_kill_ratio,
+        "当天最高战力": max_power,
+        "战力增长": power_growth,
+        "战斗活跃度": battle_score,
+        "科技战力": tech_power
+    }
 
 def calculate_summary_stats(daily_stats: List[Dict], max_power: float) -> Dict:
     """计算总体统计信息"""
@@ -187,25 +191,27 @@ def calculate_summary_stats(daily_stats: List[Dict], max_power: float) -> Dict:
     }
 
 def process_user_data(user_data: Dict, start_timestamp: int, end_timestamp: int) -> Tuple[Dict, List[Dict], str, float]:
-    """处理单个用户的数据"""
+    """处理单个用户的数据，累计值差值归属于当前日期，负数置0"""
     daily_stats = []
     latest_nick = "Unknown"
     latest_day = 0
     max_power = 0
     end_max_power = 0
-
-    for entry in user_data["Data"]:
+    data_list = user_data["Data"]
+    data_list = sorted(data_list, key=lambda x: x["day"])  # 按日期升序
+    for idx in range(len(data_list)):
+        entry = data_list[idx]
+        prev_entry = data_list[idx-1] if idx > 0 else None
         if "nick" in entry and entry["day"] > latest_day:
             latest_nick = entry["nick"]
             latest_day = entry["day"]
             max_power = entry.get("maxpower", 0)
-
-        daily_stat = calculate_daily_stats(entry, start_timestamp, end_timestamp)
-        if daily_stat:
+        # 只统计在时间范围内的
+        if validate_date(entry["day"]) and start_timestamp <= entry["day"] <= end_timestamp:
+            daily_stat = calculate_daily_stats(entry, prev_entry)
             daily_stats.append(daily_stat)
             if entry["day"] <= end_timestamp:
                 end_max_power = max(end_max_power, entry.get("maxpower", 0))
-
     if daily_stats:
         summary_stats = calculate_summary_stats(daily_stats, max_power)
         return summary_stats, daily_stats, latest_nick, end_max_power
