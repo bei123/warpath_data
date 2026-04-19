@@ -2,7 +2,7 @@ import json
 import requests
 import argparse
 from datetime import datetime, timedelta
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Tuple
 import os
 from pathlib import Path
 import logging
@@ -33,7 +33,16 @@ class GuildDataFetcher:
     
     async def __aenter__(self):
         """异步上下文管理器入口"""
-        self.session = aiohttp.ClientSession(timeout=self.timeout)
+        # 部分接口错误返回 text/html；显式 Accept/User-Agent 更易拿到 JSON
+        hdrs = {
+            "Accept": "application/json, text/plain, */*",
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/122.0.0.0 Safari/537.36"
+            ),
+        }
+        self.session = aiohttp.ClientSession(timeout=self.timeout, headers=hdrs)
         return self
     
     async def __aexit__(self, exc_type, exc_val, exc_tb):
@@ -51,8 +60,19 @@ class GuildDataFetcher:
                     except ContentTypeError as e:
                         logging.warning(f"响应MIME类型不是JSON: {e}")
                         text = await response.text()
-                        
-                        # 尝试解析文本内容为JSON
+                        stripped = text.strip()
+                        if stripped.startswith("<") or "<html" in stripped[:200].lower():
+                            logging.warning(
+                                "响应为 HTML 页面（非 JSON），可能被网关/登录页拦截；"
+                                "前 200 字符: %s",
+                                stripped[:200].replace("\n", " "),
+                            )
+                            if retry_count < self.max_retries:
+                                wait_time = self.retry_delay * (retry_count + 1)
+                                await asyncio.sleep(wait_time)
+                                return await self.fetch_with_retry(url, params, retry_count + 1)
+                            return None
+                        # 尝试解析文本内容为 JSON（部分接口 Content-Type 标错）
                         try:
                             data = json.loads(text)
                             logging.info("成功解析响应内容为JSON")
@@ -131,7 +151,7 @@ class GuildDataFetcher:
             logging.error(f"获取公会 {gid} 在 {day} 的数据失败")
         return data
     
-    def extract_pids(self, data: Dict[str, Any]) -> List[int]:
+    def extract_pids(self, data: Dict[str, Any], warn_if_empty: bool = True) -> List[int]:
         """提取pid列表"""
         if not isinstance(data, dict):
             logging.error("数据不是字典类型")
@@ -147,9 +167,51 @@ class GuildDataFetcher:
             return []
             
         pids = [entry["pid"] for entry in data_list if isinstance(entry, dict) and "pid" in entry]
-        if not pids:
+        if not pids and warn_if_empty:
             logging.warning("未找到任何有效的pid")
         return pids
+
+    async def fetch_guild_member_with_day_fallback(
+        self, gid: int, day_candidates: List[str]
+    ) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
+        """
+        按候选日期依次请求 guild_member，直到拿到非空成员 PID 或候选用尽。
+        返回 (guild_member 响应, 实际生效的 day)；均失败时返回 (最后一条响应或 None, None)。
+        """
+        last: Optional[Dict[str, Any]] = None
+        for day in day_candidates:
+            data = await self.fetch_with_retry(
+                f"{self.base_url}/guild_member", {"gid": int(gid), "day": str(day)}
+            )
+            last = data
+            if not data or not isinstance(data, dict):
+                continue
+            if data.get("Code") != 0:
+                logging.info(
+                    "guild_member gid=%s day=%s Code=%s Message=%s",
+                    gid,
+                    day,
+                    data.get("Code"),
+                    data.get("Message"),
+                )
+                continue
+            pids = self.extract_pids(data, warn_if_empty=False)
+            if pids:
+                logging.info(
+                    "guild_member 成功 gid=%s 使用日期=%s 成员数=%s",
+                    gid,
+                    day,
+                    len(pids),
+                )
+                return data, str(day)
+            n = len(data.get("Data") or [])
+            logging.info(
+                "guild_member 空成员 gid=%s day=%s Code=0 Data条数=%s",
+                gid,
+                day,
+                n,
+            )
+        return last, None
     
     def save_data(self, data: Dict[str, Any], gid: int, day: str) -> str:
         """保存数据到文件"""
