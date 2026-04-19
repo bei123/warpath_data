@@ -12,49 +12,40 @@ on:
       - 'data01.py'
       - 'main.py'
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build EXE
     runs-on: windows-latest
-    
+
     steps:
-    - uses: actions/checkout@v4
-    
+    - uses: actions/checkout@v5
+
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v6
       with:
         python-version: "3.12"
-        
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        
+
     - name: Generate icon
       run: |
         python icon.py
-        
+
     - name: Build EXE
       run: |
         pyinstaller --noconfirm --onefile --windowed --icon=icon.ico --name "战火公会赛季数据分析工具" gui_qt.py
-        
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Create release and upload asset
+      uses: softprops/action-gh-release@v3
       with:
         tag_name: v${{ github.run_number }}
-        release_name: 战火公会数据分析工具 v${{ github.run_number }}
+        name: 战火公会数据分析工具 v${{ github.run_number }}
         draft: false
         prerelease: false
-        
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/战火公会赛季数据分析工具.exe
-        asset_name: 战火公会赛季数据分析工具.exe
-        asset_content_type: application/x-msdownload 
+        files: dist/战火公会赛季数据分析工具.exe
