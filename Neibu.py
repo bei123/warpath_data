@@ -814,35 +814,31 @@ def kvk_int_ymd_to_iso(ymd: Union[int, str]) -> str:
 
 def kvk_guild_roster_day_candidates(start_ymd: int, end_ymd: int) -> List[str]:
     """
-    guild_member 的 day 参数在赛季末日可能没有快照；依次尝试：
-    末日、首日、赛季中点、末日前若干天、今天（去重保序）。
+    guild_member 的 day 候选顺序（无重复）：
+
+    - 一般：从 **min(今天, 赛季末日)** 起按自然日 **逐日往前** 试到 **赛季首日**（含）。
+      即今天在赛季内时优先用「最近」的日历；今天已过末日时等价于从末日往前到首日。
+    - 若今天在赛季开始日之前：退化为从 **赛季末日** 往前到首日。
     """
     from datetime import timedelta
 
-    seen: set = set()
     out: List[str] = []
-
-    def add(ym: Union[int, str]) -> None:
-        s = f"{int(ym):08d}"
-        if s not in seen:
-            seen.add(s)
-            out.append(s)
-
-    add(end_ymd)
-    add(start_ymd)
     try:
         sd = datetime.strptime(f"{int(start_ymd):08d}", "%Y%m%d")
         ed = datetime.strptime(f"{int(end_ymd):08d}", "%Y%m%d")
-        if ed >= sd:
-            mid = sd + (ed - sd) / 2
-            add(mid.strftime("%Y%m%d"))
-        for i in (1, 2, 3, 5, 7, 10, 14):
-            d = ed - timedelta(days=i)
-            if d >= sd:
-                add(d.strftime("%Y%m%d"))
+        if ed < sd:
+            return [f"{int(end_ymd):08d}"]
+        td = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+        # 起点：不晚于赛季末日；若今天在赛季内则从今天往前试
+        first = td if td <= ed else ed
+        if first < sd:
+            first = ed
+        d = first
+        while d >= sd:
+            out.append(d.strftime("%Y%m%d"))
+            d -= timedelta(days=1)
     except (TypeError, ValueError, OSError):
-        pass
-    add(datetime.now().strftime("%Y%m%d"))
+        out.append(f"{int(end_ymd):08d}")
     return out
 
 

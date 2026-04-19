@@ -175,7 +175,8 @@ class GuildDataFetcher:
         self, gid: int, day_candidates: List[str]
     ) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
         """
-        按候选日期依次请求 guild_member，直到拿到非空成员 PID 或候选用尽。
+        按候选日期顺序依次请求 guild_member，直到拿到非空成员 PID 或候选用尽。
+        候选日通常由调用方从 min(今天, 赛季末日) 逐日往前排到赛季首日（Kvk 成员拉取）。
         返回 (guild_member 响应, 实际生效的 day)；均失败时返回 (最后一条响应或 None, None)。
         """
         last: Optional[Dict[str, Any]] = None
